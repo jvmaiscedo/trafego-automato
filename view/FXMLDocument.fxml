@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="820.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainController">
+   <children>
+      <ImageView fitHeight="820.0" fitWidth="800.0" pickOnBounds="true">
+         <image>
+            <Image url="@../img/Velocidade.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="643.0" fitWidth="226.0" layoutX="335.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/trilhos.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="trem2" fitHeight="58.0" fitWidth="40.0" layoutX="416.0" layoutY="567.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/tremVermelho.png" />
+         </image>
+      </ImageView>
+      <Slider fx:id="velocidadeTrem2" layoutX="717.0" layoutY="711.0" max="10.0" orientation="VERTICAL" prefHeight="100.0" prefWidth="16.0" />
+      <Slider fx:id="velocidadeTrem1" layoutX="598.0" layoutY="711.0" max="10.0" orientation="VERTICAL" prefHeight="100.0" prefWidth="37.0" />
+      <Button fx:id="iniciarMovimento" layoutX="288.0" layoutY="650.0" mnemonicParsing="false" onAction="#iniciarMovimento" prefHeight="49.0" prefWidth="209.0" style="-fx-background-color: white; -fx-border-radius: 100;" text="Start" textFill="#3a0fe4">
+         <font>
+            <Font name="DejaVu Sans Mono Bold" size="16.0" />
+         </font></Button>
+      <Button fx:id="resetarMovimento" layoutX="288.0" layoutY="741.0" mnemonicParsing="false" onAction="#resetarMovimento" prefHeight="58.0" prefWidth="209.0" style="-fx-background-color: white; -fx-border-radius: 100;" text="Reset" textFill="#eb0707">
+         <font>
+            <Font name="DejaVu Sans Mono Bold" size="20.0" />
+         </font>
+      </Button>
+      <ImageView fx:id="trem1" fitHeight="58.0" fitWidth="40.0" layoutX="348.0" layoutY="567.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/tremVerde.png" />
+         </image>
+      </ImageView>
+      <RadioButton fx:id="cimaParaBaixo" layoutX="55.0" layoutY="690.0" mnemonicParsing="false" onAction="#posicao1" text="⇊" textFill="WHITE">
+         <font>
+            <Font name="DejaVu Sans Bold" size="13.0" />
+         </font>
+      </RadioButton>
+      <RadioButton fx:id="baixoParaCima" layoutX="93.0" layoutY="690.0" mnemonicParsing="false" onAction="#posicao2" text="⇈" textFill="WHITE">
+         <font>
+            <Font name="DejaVu Sans Bold" size="13.0" />
+         </font></RadioButton>
+      <RadioButton fx:id="opostamente" layoutX="142.0" layoutY="690.0" mnemonicParsing="false" onAction="#posicao3" text="⇵" textFill="WHITE">
+         <font>
+            <Font name="DejaVu Sans Bold" size="13.0" />
+         </font></RadioButton>
+      <RadioButton fx:id="opostamenteInverso" layoutX="186.0" layoutY="690.0" mnemonicParsing="false" onAction="#posicao4" text="⇅" textFill="WHITE">
+         <font>
+            <Font name="DejaVu Sans Bold" size="13.0" />
+         </font></RadioButton>
+      <RadioButton fx:id="variavelDeTravamento" layoutX="61.0" layoutY="752.0" mnemonicParsing="false" onAction="#variavelDeTravamento" prefHeight="18.0" prefWidth="40.0" text="VT" textFill="WHITE">
+         <font>
+            <Font name="DejaVu Sans Mono Bold" size="13.0" />
+         </font>
+      </RadioButton>
+      <RadioButton fx:id="estritaAlternancia" layoutX="137.0" layoutY="752.0" mnemonicParsing="false" onAction="#estritaAlternancia" text="E. Alternancia" textFill="WHITE">
+         <font>
+            <Font name="DejaVu Sans Mono Bold" size="13.0" />
+         </font>
+      </RadioButton>
+      <RadioButton fx:id="solucaoPeterson" layoutX="61.0" layoutY="781.0" mnemonicParsing="false" onAction="#solucaoPeterson" text="Soluçao de Peterson" textFill="WHITE">
+         <font>
+            <Font name="DejaVu Sans Mono Bold" size="13.0" />
+         </font>
+      </RadioButton>
+   </children>
+</AnchorPane>

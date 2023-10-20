@@ -1,0 +1,34 @@
+/* ***************************************************************
+* Autor............: Joao Victor Gomes Macedo
+* Matricula........: 202210166
+* Inicio...........: 25/08/2023
+* Ultima alteracao.: 29/08/2023
+* Nome.............: Principal
+* Funcao...........: Este codigo tem a funcao de fazer com que
+                    o GUI feito no FXMLDocument seja executado.
+*************************************************************** */
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import controller.MainController;
+
+public class Principal extends Application {
+
+  @Override
+  public void start(Stage stage) throws Exception {
+    Parent root = FXMLLoader.load(getClass().getResource("/view/FXMLDocument.fxml"));
+
+    Scene scene = new Scene(root);
+
+    stage.setScene(scene);
+    stage.setResizable(false);
+    stage.show();
+    }
+
+  public static void main(String[] args) {
+    launch(args);
+  }
+
+}
