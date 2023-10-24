@@ -1,5 +1,90 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="820.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainController" />
+<AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainController">
+   <children>
+      <ImageView fitHeight="801.0" fitWidth="1000.0" layoutX="7.0" layoutY="4.0" pickOnBounds="true">
+         <image>
+            <Image url="@../img/rockDay.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="bateristaTocando3" fitHeight="98.0" fitWidth="166.0" layoutX="187.0" layoutY="171.0" pickOnBounds="true">
+         <image>
+            <Image url="@../img/playingDrums.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="bateristaTocando2" fitHeight="98.0" fitWidth="166.0" layoutX="430.0" layoutY="42.0" pickOnBounds="true">
+         <image>
+            <Image url="@../img/playingDrums.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="bateristaTocando1" fitHeight="106.0" fitWidth="166.0" layoutX="685.0" layoutY="163.0" pickOnBounds="true">
+         <image>
+            <Image url="@../img/playingDrums.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="bateristaTocando4" fitHeight="98.0" fitWidth="166.0" layoutX="270.0" layoutY="354.0" pickOnBounds="true">
+         <image>
+            <Image url="@../img/playingDrums.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="bateristaTocando5" fitHeight="98.0" fitWidth="166.0" layoutX="602.0" layoutY="356.0" pickOnBounds="true">
+         <image>
+            <Image url="@../img/playingDrums.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="bateristaEscutando1" fitHeight="98.0" fitWidth="166.0" layoutX="685.0" layoutY="167.0" pickOnBounds="true">
+         <image>
+            <Image url="@../img/listeningRock2.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="bateristaEscutando2" fitHeight="98.0" fitWidth="166.0" layoutX="424.0" layoutY="42.0" pickOnBounds="true">
+         <image>
+            <Image url="@../img/listeningRock2.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="bateristaEscutando3" fitHeight="98.0" fitWidth="166.0" layoutX="187.0" layoutY="167.0" pickOnBounds="true">
+         <image>
+            <Image url="@../img/listeningRock2.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="bateristaEscutando4" fitHeight="98.0" fitWidth="166.0" layoutX="270.0" layoutY="354.0" pickOnBounds="true">
+         <image>
+            <Image url="@../img/listeningRock2.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="bateristaEscutando5" fitHeight="98.0" fitWidth="166.0" layoutX="602.0" layoutY="356.0" pickOnBounds="true">
+         <image>
+            <Image url="@../img/listeningRock2.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="baqueta1" fitHeight="63.0" fitWidth="130.0" layoutX="669.0" layoutY="277.0" pickOnBounds="true">
+         <image>
+            <Image url="@../img/drumstick-149338_640.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="baqueta2" fitHeight="63.0" fitWidth="130.0" layoutX="620.0" layoutY="108.0" pickOnBounds="true">
+         <image>
+            <Image url="@../img/drumstick-149338_640.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="baqueta3" fitHeight="63.0" fitWidth="130.0" layoutX="270.0" layoutY="91.0" pickOnBounds="true">
+         <image>
+            <Image url="@../img/drumstick-149338_640.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="baqueta4" fitHeight="63.0" fitWidth="130.0" layoutX="270.0" layoutY="277.0" pickOnBounds="true">
+         <image>
+            <Image url="@../img/drumstick-149338_640.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="baqueta5" fitHeight="63.0" fitWidth="130.0" layoutX="448.0" layoutY="391.0" pickOnBounds="true">
+         <image>
+            <Image url="@../img/drumstick-149338_640.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
