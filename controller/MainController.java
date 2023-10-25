@@ -55,22 +55,25 @@ public class MainController implements Initializable {
 
   public static final int N = 5; // define o no. de filosofos
   public static Filosofo[] filosofos = new Filosofo[N];
-  public static int[] states = new int[N];
-  public volatile static Semaphore mutex = new Semaphore(1);
+  public volatile static int[] states = new int[N];
+  public  static Semaphore mutex = new Semaphore(1);
   public static Semaphore[] forks = new Semaphore[N];
 
   @Override
   public void initialize(URL url, ResourceBundle rb) {
     for(int i=0; i<N ;i++){
-      forks [i] = new Semaphore(1);
-      filosofos[i] = new Filosofo(i, this );
+      forks [i] = new Semaphore(0);
+      filosofos[i] = new Filosofo(i, this);
       states[i] = 0;
     }
+
+
     for (int j=0; j<N; j++){
       filosofos[j].setNeighbours();
     }
     filosofos[0].start();
     filosofos[1].start();
+    filosofos[0].setPriority(1);
     filosofos[2].start();
     filosofos[3].start();
     filosofos[4].start();

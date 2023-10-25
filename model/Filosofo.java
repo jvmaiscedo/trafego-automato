@@ -2,10 +2,13 @@ package model;
 
 import controller.MainController;
 import javafx.application.Platform;
+import sun.applet.Main;
+
+import java.util.concurrent.Semaphore;
 
 public class Filosofo extends Thread{
 
-  private final MainController control;
+  private static MainController control;
   private final int id;
   private Filosofo left;
   private Filosofo right;
@@ -21,7 +24,6 @@ public class Filosofo extends Thread{
       take_forks();
       eat();
       put_forks();
-
     }
   }
 
@@ -48,16 +50,15 @@ public class Filosofo extends Thread{
     try {
       MainController.mutex.acquire();
       MainController.states[this.id] = 1;
-      Filosofo.test(this);
       System.out.println("Filosofo " + this.id + " tentando pegar garfos");
+      test(this);
       MainController.mutex.release();
       MainController.forks[this.id].acquire();
       Platform.runLater(()->control.hideSticks(this.id));
-      System.out.println("Filosofo " + this.id + " pegou os garfos");
     } catch (InterruptedException e) {}
 
   }
-  private void eat() {
+  private void eat(){
     try  {
       System.out.println("O filosofo " + this.id + " está comendo");
       Platform.runLater(() -> control.changeImageToPlaying(this.id));
@@ -70,19 +71,23 @@ public class Filosofo extends Thread{
       Platform.runLater(() -> control.changeImageToListening(this.id));
       MainController.mutex.acquire();
       MainController.states[this.id] = 0;
-      Filosofo.test(left);
-      Filosofo.test(right);
+      System.out.println("Filosofo " + this.id + " colocou os garfos");
+      test(left);
+      test(right);
       MainController.mutex.release();
     } catch (InterruptedException e) {
       throw new RuntimeException(e);
     }
-    System.out.println("Filosofo " + this.id + " colocou os garfos");
   }
-  public static void test(Filosofo filosofo){
+  public void test(Filosofo filosofo){
     if(MainController.states[filosofo.id]==1 && MainController.states[filosofo.left.id]!=2
         && MainController.states[filosofo.right.id]!=2){
       MainController.states[filosofo.id] = 2;
       MainController.forks[filosofo.id].release();
+      System.out.println("Filosofo " + filosofo.id + " pegou os garfos"+"\n Este: "+ MainController.forks[filosofo.id].availablePermits()+
+        "\n Esquerdo: "+ MainController.forks[filosofo.left.id].availablePermits()+
+        "\n Direito: "+ MainController.forks[filosofo.right.id].availablePermits());
+      //eat();
     }
 
   }
