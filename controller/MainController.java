@@ -14,6 +14,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.concurrent.Semaphore;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -153,6 +154,57 @@ public class MainController implements Initializable {
 
   }
 
+
+
+  @FXML
+  public void pauseBaterista1() {
+    filosofos[0].pausar();
+  }
+
+  @FXML
+  public void restartBaterista1() {
+    filosofos[0].retomar();
+  }
+
+  @FXML
+  public void pauseBaterista2() {
+    filosofos[1].pausar();
+  }
+
+  @FXML
+  public void restartBaterista2() {
+    filosofos[1].retomar();
+  }
+
+  @FXML
+  public void pauseBaterista3() {
+    filosofos[2].pausar();
+  }
+
+  @FXML
+  public void restartBaterista3() {
+    filosofos[2].retomar();
+  }
+
+  @FXML
+  public void pauseBaterista4() {
+    filosofos[3].pausar();
+  }
+
+  @FXML
+  public void restartBaterista4() {
+    filosofos[3].retomar();
+  }
+
+  @FXML
+  public void pauseBaterista5() {
+    filosofos[4].pausar();
+  }
+
+  @FXML
+  public void restartBaterista5() {
+    filosofos[4].retomar();
+  }
 
   public int getVelocidadeOuvindo(int id){
     switch (id){
@@ -337,5 +389,5 @@ public class MainController implements Initializable {
     }
 
   }
-  
+
 }

@@ -92,74 +92,124 @@
       </ImageView>
       <Slider fx:id="velBateristaOuvindo3" layoutX="55.0" layoutY="513.0" max="10.0" min="1.0" prefHeight="16.0" prefWidth="87.0" />
       <Slider fx:id="velBateristaTocando3" layoutX="55.0" layoutY="536.0" max="10.0" min="1.0" prefHeight="16.0" prefWidth="87.0" />
-      <Button fx:id="pauseBaterista3" layoutX="55.0" layoutY="474.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="34.0" style="-fx-background-color: white;" />
-      <Button fx:id="restartBaterista3" layoutX="100.0" layoutY="474.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="34.0" style="-fx-background-color: white;" />
-      <ImageView fitHeight="26.0" fitWidth="34.0" layoutX="55.0" layoutY="474.0" pickOnBounds="true">
-         <image>
-            <Image url="@../img/play.png" />
-         </image></ImageView>
-      <ImageView fitHeight="26.0" fitWidth="34.0" layoutX="100.0" layoutY="474.0" pickOnBounds="true">
-         <image>
-            <Image url="@../img/restart.png" />
-         </image>
-      </ImageView>
-      <Button fx:id="pauseBaterista2" layoutX="444.0" layoutY="212.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="34.0" style="-fx-background-color: white;" />
-      <Button fx:id="restartBaterista2" layoutX="490.0" layoutY="212.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="34.0" style="-fx-background-color: white;" />
-      <ImageView fitHeight="26.0" fitWidth="34.0" layoutX="490.0" layoutY="212.0" pickOnBounds="true">
-         <image>
-            <Image url="@../img/restart.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="26.0" fitWidth="34.0" layoutX="444.0" layoutY="212.0" pickOnBounds="true">
-         <image>
-            <Image url="@../img/play.png" />
-         </image>
-      </ImageView>
+      <Button fx:id="pauseBaterista3" layoutX="55.0" layoutY="474.0" mnemonicParsing="false" onAction="#pauseBaterista3" prefHeight="26.0" prefWidth="34.0" style="-fx-background-color: white;">
+         <font>
+            <Font size="1.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="26.0" fitWidth="34.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../img/pause.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <Button fx:id="restartBaterista3" layoutX="99.0" layoutY="474.0" mnemonicParsing="false" onAction="#restartBaterista3" prefHeight="26.0" prefWidth="34.0" style="-fx-background-color: white;">
+         <graphic>
+            <ImageView fitHeight="26.0" fitWidth="34.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../img/undo.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font size="1.0" />
+         </font></Button>
+      <Button fx:id="pauseBaterista2" layoutX="444.0" layoutY="212.0" mnemonicParsing="false" onAction="#pauseBaterista2" prefHeight="26.0" prefWidth="34.0" style="-fx-background-color: white;">
+         <graphic>
+            <ImageView fitHeight="26.0" fitWidth="34.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../img/pause.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font size="1.0" />
+         </font></Button>
+      <Button fx:id="restartBaterista2" layoutX="488.0" layoutY="212.0" mnemonicParsing="false" onAction="#restartBaterista2" prefHeight="26.0" prefWidth="34.0" style="-fx-background-color: white;">
+         <graphic>
+            <ImageView fitHeight="26.0" fitWidth="34.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../img/undo.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font size="1.0" />
+         </font></Button>
       <Slider fx:id="velBateristaOuvindo2" layoutX="444.0" layoutY="251.0" max="10.0" min="1.0" prefHeight="16.0" prefWidth="87.0" />
       <Slider fx:id="velBateristaTocando1" layoutX="867.0" layoutY="536.0" max="10.0" min="1.0" prefHeight="16.0" prefWidth="87.0" />
       <Slider fx:id="velBateristaTocando2" layoutX="444.0" layoutY="274.0" max="10.0" min="1.0" prefHeight="16.0" prefWidth="87.0" />
       <Slider fx:id="velBateristaOuvindo1" layoutX="867.0" layoutY="513.0" max="10.0" min="1.0" prefHeight="16.0" prefWidth="87.0" />
-      <Button fx:id="pauseBaterista1" layoutX="867.0" layoutY="474.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="34.0" style="-fx-background-color: white;" />
-      <Button fx:id="restartBaterista1" layoutX="911.0" layoutY="474.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="34.0" style="-fx-background-color: white;" />
-      <ImageView fitHeight="26.0" fitWidth="34.0" layoutX="867.0" layoutY="474.0" pickOnBounds="true">
-         <image>
-            <Image url="@../img/play.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="26.0" fitWidth="34.0" layoutX="911.0" layoutY="474.0" pickOnBounds="true">
-         <image>
-            <Image url="@../img/restart.png" />
-         </image>
-      </ImageView>
+      <Button fx:id="pauseBaterista1" layoutX="867.0" layoutY="474.0" mnemonicParsing="false" onAction="#pauseBaterista1" prefHeight="26.0" prefWidth="34.0" style="-fx-background-color: white;">
+         <font>
+            <Font size="1.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="26.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/pause.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <Button fx:id="restartBaterista1" layoutX="911.0" layoutY="474.0" mnemonicParsing="false" onAction="#restartBaterista1" prefHeight="26.0" prefWidth="34.0" style="-fx-background-color: white;">
+         <graphic>
+            <ImageView fitHeight="26.0" fitWidth="34.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../img/undo.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font size="1.0" />
+         </font></Button>
       <Slider fx:id="velBateristaTocando5" layoutX="760.0" layoutY="789.0" max="10.0" min="1.0" prefHeight="16.0" prefWidth="87.0" />
       <Slider fx:id="velBateristaOuvindo5" layoutX="760.0" layoutY="766.0" max="10.0" min="1.0" prefHeight="16.0" prefWidth="87.0" />
-      <Button fx:id="restartBaterista5" layoutX="805.0" layoutY="727.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="34.0" style="-fx-background-color: white;" />
-      <Button fx:id="pauseBaterista5" layoutX="760.0" layoutY="727.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="34.0" style="-fx-background-color: white;" />
-      <ImageView fitHeight="26.0" fitWidth="34.0" layoutX="805.0" layoutY="727.0" pickOnBounds="true">
-         <image>
-            <Image url="@../img/restart.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="26.0" fitWidth="34.0" layoutX="760.0" layoutY="727.0" pickOnBounds="true">
-         <image>
-            <Image url="@../img/play.png" />
-         </image>
-      </ImageView>
-      <Button fx:id="restartBaterista4" layoutX="193.0" layoutY="727.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="34.0" style="-fx-background-color: white;" />
-      <Button fx:id="pauseBaterista4" layoutX="149.0" layoutY="727.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="34.0" style="-fx-background-color: white;" />
-      <ImageView fitHeight="26.0" fitWidth="34.0" layoutX="149.0" layoutY="727.0" pickOnBounds="true">
-         <image>
-            <Image url="@../img/play.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="26.0" fitWidth="34.0" layoutX="193.0" layoutY="727.0" pickOnBounds="true">
-         <image>
-            <Image url="@../img/restart.png" />
-         </image>
-      </ImageView>
+      <Button fx:id="restartBaterista5" layoutX="804.0" layoutY="727.0" mnemonicParsing="false" onAction="#restartBaterista5" prefHeight="26.0" prefWidth="34.0" style="-fx-background-color: white;">
+         <graphic>
+            <ImageView fitHeight="26.0" fitWidth="34.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../img/undo.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font size="1.0" />
+         </font></Button>
+      <Button fx:id="pauseBaterista5" layoutX="760.0" layoutY="727.0" mnemonicParsing="false" onAction="#pauseBaterista5" prefHeight="26.0" prefWidth="34.0" style="-fx-background-color: white;">
+         <graphic>
+            <ImageView fitHeight="26.0" fitWidth="34.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../img/pause.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font size="1.0" />
+         </font></Button>
+      <Button fx:id="restartBaterista4" layoutX="195.0" layoutY="727.0" mnemonicParsing="false" onAction="#restartBaterista4" prefHeight="26.0" prefWidth="34.0" style="-fx-background-color: white;">
+         <graphic>
+            <ImageView fitHeight="26.0" fitWidth="34.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../img/undo.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font size="1.0" />
+         </font></Button>
+      <Button fx:id="pauseBaterista4" layoutX="151.0" layoutY="727.0" mnemonicParsing="false" onAction="#pauseBaterista4" prefHeight="26.0" prefWidth="34.0" style="-fx-background-color: white;">
+         <graphic>
+            <ImageView fitHeight="26.0" fitWidth="34.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../img/pause.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font size="1.0" />
+         </font></Button>
       <Slider fx:id="velBateristaOuvindo4" layoutX="149.0" layoutY="766.0" max="10.0" min="1.0" prefHeight="16.0" prefWidth="87.0" />
       <Slider fx:id="velBateristaTocando4" layoutX="149.0" layoutY="789.0" max="10.0" min="1.0" prefHeight="16.0" prefWidth="87.0" />
-      <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="bateristaEsperando3" fitHeight="123.0" fitWidth="171.0" layoutX="151.0" layoutY="459.0" pickOnBounds="true">
          <image>
             <Image url="@../img/waitingForDrumStick.png" />
