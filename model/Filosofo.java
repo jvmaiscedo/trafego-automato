@@ -34,41 +34,36 @@ public class Filosofo extends Thread{
   }
 
   private void think(){
-    try {
-      Platform.runLater(() -> control.changeImageToListening(this.id));
-      System.out.println("O filosofo " + this.id + " está pensando");
-      sleep(1500);
-      Platform.runLater(() -> control.changeImageToWaiting(this.id));
-      sleep(1500);
-      System.out.println("Filosofo " + this.id + " passou por pensar");
+    Platform.runLater(() -> control.changeImageToListening(this.id));
+    Platform.runLater(()-> control.setEstadoBaterista(this.id, "Escutando Rock"));
+    System.out.println("O filosofo " + this.id + " está pensando");
+    sleepTime(control.getVelocidadeOuvindo(this.id));
+    System.out.println(control.getVelocidadeOuvindo(this.id));
+    System.out.println("Filosofo " + this.id + " passou por pensar");
 
-    } catch (InterruptedException e) {
-      throw new RuntimeException(e);
-    }
   }
   private void take_forks(){
     try {
       MainController.mutex.acquire();
       MainController.states[this.id] = 1;
+      Platform.runLater(() -> control.changeImageToWaiting(this.id));
+      Platform.runLater(()-> control.setEstadoBaterista(this.id, "Querendo tocar"));
       System.out.println("Filosofo " + this.id + " tentando pegar garfos");
       test(this);
       MainController.mutex.release();
       MainController.forks[this.id].acquire();
-      Platform.runLater(()->control.hideSticks(this.id));
     } catch (InterruptedException e) {}
 
   }
   private void eat(){
-    try  {
-      System.out.println("O filosofo " + this.id + " está comendo");
-      Platform.runLater(() -> control.changeImageToPlaying(this.id));
-      sleep(2000);
-    }catch (InterruptedException e) {}
+    System.out.println("O filosofo " + this.id + " está comendo");
+    Platform.runLater(() -> control.changeImageToPlaying(this.id));
+    Platform.runLater(()-> control.setEstadoBaterista(this.id, "Tocando"));
+    sleepTime(control.getVelocidadeTocando(this.id));
   }
   private void put_forks(){
     try {
       Platform.runLater(()->control.showSticks(this.id));
-      Platform.runLater(() -> control.changeImageToListening(this.id));
       MainController.mutex.acquire();
       MainController.states[this.id] = 0;
       System.out.println("Filosofo " + this.id + " colocou os garfos");
@@ -87,8 +82,14 @@ public class Filosofo extends Thread{
       System.out.println("Filosofo " + filosofo.id + " pegou os garfos"+"\n Este: "+ MainController.forks[filosofo.id].availablePermits()+
         "\n Esquerdo: "+ MainController.forks[filosofo.left.id].availablePermits()+
         "\n Direito: "+ MainController.forks[filosofo.right.id].availablePermits());
-      //eat();
+      Platform.runLater(()->control.hideSticks(this.id));
     }
+  }
 
+  public void sleepTime(int time){
+    try {
+      sleep((long) time*1000);
+    } catch (InterruptedException e) {
+    }
   }
 }
