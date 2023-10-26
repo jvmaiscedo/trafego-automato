@@ -11,6 +11,7 @@
 package controller;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.concurrent.Semaphore;
 
@@ -117,7 +118,9 @@ public class MainController implements Initializable {
   public Button restartBaterista5;
   @FXML
   public Label estadoBaterista5;
-
+  @FXML
+  public ImageView baqueta0;
+  @FXML
   public ImageView baqueta1;
   @FXML
   public ImageView baqueta2;
@@ -125,8 +128,9 @@ public class MainController implements Initializable {
   public ImageView baqueta3;
   @FXML
   public ImageView baqueta4;
-  @FXML
-  public ImageView baqueta5;
+
+  private ImageView[] baquetas;
+
 
   public static final int N = 5; // define o no. de filosofos
   public static Filosofo[] filosofos = new Filosofo[N];
@@ -136,6 +140,10 @@ public class MainController implements Initializable {
 
   @Override
   public void initialize(URL url, ResourceBundle rb) {
+    iniciar();
+  }
+
+  public void iniciar(){
     for(int i=0; i<N ;i++){
       forks [i] = new Semaphore(0);
       filosofos[i] = new Filosofo(i, this);
@@ -151,7 +159,7 @@ public class MainController implements Initializable {
     filosofos[2].start();
     filosofos[3].start();
     filosofos[4].start();
-
+    baquetas = new ImageView[]{ baqueta0, baqueta1, baqueta2, baqueta3, baqueta4};
   }
 
 
@@ -159,6 +167,7 @@ public class MainController implements Initializable {
   @FXML
   public void pauseBaterista1() {
     filosofos[0].pausar();
+    System.out.println(states[0]);
   }
 
   @FXML
@@ -343,51 +352,17 @@ public class MainController implements Initializable {
 
   }
 
-  public void hideSticks(int id){
-    if(id==0){
-      baqueta1.setVisible(false);
-      baqueta2.setVisible(false);
-    }
-    else if (id==1) {
-      baqueta2.setVisible(false);
-      baqueta3.setVisible(false);
-    }
-    else if (id==2) {
-      baqueta3.setVisible(false);
-      baqueta4.setVisible(false);
-    }
-    else if (id==3) {
-      baqueta4.setVisible(false);
-      baqueta5.setVisible(false);
-    }
-    else if (id==4) {
-      baqueta5.setVisible(false);
-      baqueta1.setVisible(false);
-    }
-
+  public void hideSticks(int id, int idRight){
+    baquetas[id].setVisible(false);
+    baquetas[idRight].setVisible(false);
   }
-  public void showSticks(int id){
-    if(id==0){
-      baqueta1.setVisible(true);
-      baqueta2.setVisible(true);
+  public void showSticks(int id, int idRight){
+    if (states[id]!=2){
+      baquetas[id].setVisible(true);
     }
-    else if (id==1) {
-      baqueta2.setVisible(true);
-      baqueta3.setVisible(true);
+    if (states[idRight]!=2) {
+      baquetas[idRight].setVisible(true);
     }
-    else if (id==2) {
-      baqueta3.setVisible(true);
-      baqueta4.setVisible(true);
-    }
-    else if (id==3) {
-      baqueta4.setVisible(true);
-      baqueta5.setVisible(true);
-    }
-    else if (id==4) {
-      baqueta5.setVisible(true);
-      baqueta1.setVisible(true);
-    }
-
   }
 
 }

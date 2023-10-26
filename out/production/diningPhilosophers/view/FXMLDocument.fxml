@@ -65,27 +65,27 @@
             <Image url="@../img/listeningRock2.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="baqueta1" fitHeight="63.0" fitWidth="130.0" layoutX="631.0" layoutY="627.0" pickOnBounds="true" rotate="28.3">
+      <ImageView fx:id="baqueta0" fitHeight="63.0" fitWidth="130.0" layoutX="631.0" layoutY="627.0" pickOnBounds="true" rotate="28.3">
          <image>
             <Image url="@../img/drumstick-149338_640.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="baqueta2" fitHeight="130.0" fitWidth="63.0" layoutX="599.0" layoutY="344.0" pickOnBounds="true" rotate="33.7">
+      <ImageView fx:id="baqueta1" fitHeight="130.0" fitWidth="63.0" layoutX="599.0" layoutY="344.0" pickOnBounds="true" rotate="33.7">
          <image>
             <Image url="@../img/drumstick2.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="baqueta3" fitHeight="130.0" fitWidth="63.0" layoutX="330.0" layoutY="350.0" pickOnBounds="true" rotate="-38.7">
+      <ImageView fx:id="baqueta2" fitHeight="130.0" fitWidth="63.0" layoutX="330.0" layoutY="350.0" pickOnBounds="true" rotate="-38.7">
          <image>
             <Image url="@../img/drumstick2.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="baqueta4" fitHeight="63.0" fitWidth="130.0" layoutX="227.0" layoutY="627.0" pickOnBounds="true" rotate="-20.6">
+      <ImageView fx:id="baqueta3" fitHeight="63.0" fitWidth="130.0" layoutX="227.0" layoutY="627.0" pickOnBounds="true" rotate="-20.6">
          <image>
             <Image url="@../img/drumstick1.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="baqueta5" fitHeight="130.0" fitWidth="63.0" layoutX="456.0" layoutY="724.0" pickOnBounds="true">
+      <ImageView fx:id="baqueta4" fitHeight="130.0" fitWidth="63.0" layoutX="456.0" layoutY="724.0" pickOnBounds="true">
          <image>
             <Image url="@../img/drumstick3.png" />
          </image>
