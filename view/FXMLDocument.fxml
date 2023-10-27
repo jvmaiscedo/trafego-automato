@@ -90,8 +90,8 @@
             <Image url="@../img/drumstick3.png" />
          </image>
       </ImageView>
-      <Slider fx:id="velBateristaOuvindo3" layoutX="55.0" layoutY="513.0" max="10.0" min="1.0" prefHeight="16.0" prefWidth="87.0" />
-      <Slider fx:id="velBateristaTocando3" layoutX="55.0" layoutY="536.0" max="10.0" min="1.0" prefHeight="16.0" prefWidth="87.0" />
+      <Slider fx:id="velBateristaOuvindo3" layoutX="55.0" layoutY="513.0" max="10.0" min="1.0" prefHeight="16.0" prefWidth="87.0" rotate="180.0" />
+      <Slider fx:id="velBateristaTocando3" layoutX="55.0" layoutY="536.0" max="10.0" min="1.0" prefHeight="16.0" prefWidth="87.0" rotate="180.0" />
       <Button fx:id="pauseBaterista3" layoutX="55.0" layoutY="474.0" mnemonicParsing="false" onAction="#pauseBaterista3" prefHeight="26.0" prefWidth="34.0" style="-fx-background-color: white;">
          <font>
             <Font size="1.0" />
@@ -136,10 +136,10 @@
          <font>
             <Font size="1.0" />
          </font></Button>
-      <Slider fx:id="velBateristaOuvindo2" layoutX="444.0" layoutY="251.0" max="10.0" min="1.0" prefHeight="16.0" prefWidth="87.0" />
-      <Slider fx:id="velBateristaTocando1" layoutX="867.0" layoutY="536.0" max="10.0" min="1.0" prefHeight="16.0" prefWidth="87.0" />
-      <Slider fx:id="velBateristaTocando2" layoutX="444.0" layoutY="274.0" max="10.0" min="1.0" prefHeight="16.0" prefWidth="87.0" />
-      <Slider fx:id="velBateristaOuvindo1" layoutX="867.0" layoutY="513.0" max="10.0" min="1.0" prefHeight="16.0" prefWidth="87.0" />
+      <Slider fx:id="velBateristaOuvindo2" layoutX="444.0" layoutY="251.0" max="10.0" min="1.0" prefHeight="16.0" prefWidth="87.0" rotate="180.0" />
+      <Slider fx:id="velBateristaTocando1" layoutX="867.0" layoutY="536.0" max="10.0" min="1.0" prefHeight="16.0" prefWidth="87.0" rotate="180.0" />
+      <Slider fx:id="velBateristaTocando2" layoutX="444.0" layoutY="274.0" max="10.0" min="1.0" prefHeight="16.0" prefWidth="87.0" rotate="180.0" />
+      <Slider fx:id="velBateristaOuvindo1" layoutX="867.0" layoutY="513.0" max="10.0" min="1.0" prefHeight="16.0" prefWidth="87.0" rotate="180.0" />
       <Button fx:id="pauseBaterista1" layoutX="867.0" layoutY="474.0" mnemonicParsing="false" onAction="#pauseBaterista1" prefHeight="26.0" prefWidth="34.0" style="-fx-background-color: white;">
          <font>
             <Font size="1.0" />
@@ -162,8 +162,8 @@
          <font>
             <Font size="1.0" />
          </font></Button>
-      <Slider fx:id="velBateristaTocando5" layoutX="760.0" layoutY="789.0" max="10.0" min="1.0" prefHeight="16.0" prefWidth="87.0" />
-      <Slider fx:id="velBateristaOuvindo5" layoutX="760.0" layoutY="766.0" max="10.0" min="1.0" prefHeight="16.0" prefWidth="87.0" />
+      <Slider fx:id="velBateristaTocando5" layoutX="760.0" layoutY="789.0" max="10.0" min="1.0" prefHeight="16.0" prefWidth="87.0" rotate="180.0" />
+      <Slider fx:id="velBateristaOuvindo5" layoutX="760.0" layoutY="766.0" max="10.0" min="1.0" prefHeight="16.0" prefWidth="87.0" rotate="180.0" />
       <Button fx:id="restartBaterista5" layoutX="804.0" layoutY="727.0" mnemonicParsing="false" onAction="#restartBaterista5" prefHeight="26.0" prefWidth="34.0" style="-fx-background-color: white;">
          <graphic>
             <ImageView fitHeight="26.0" fitWidth="34.0" pickOnBounds="true">
@@ -208,8 +208,8 @@
          <font>
             <Font size="1.0" />
          </font></Button>
-      <Slider fx:id="velBateristaOuvindo4" layoutX="149.0" layoutY="766.0" max="10.0" min="1.0" prefHeight="16.0" prefWidth="87.0" />
-      <Slider fx:id="velBateristaTocando4" layoutX="149.0" layoutY="789.0" max="10.0" min="1.0" prefHeight="16.0" prefWidth="87.0" />
+      <Slider fx:id="velBateristaOuvindo4" layoutX="149.0" layoutY="766.0" max="10.0" min="1.0" prefHeight="16.0" prefWidth="87.0" rotate="180.0" />
+      <Slider fx:id="velBateristaTocando4" layoutX="149.0" layoutY="789.0" max="10.0" min="1.0" prefHeight="16.0" prefWidth="87.0" rotate="180.0" />
       <ImageView fx:id="bateristaEsperando3" fitHeight="123.0" fitWidth="171.0" layoutX="151.0" layoutY="459.0" pickOnBounds="true">
          <image>
             <Image url="@../img/waitingForDrumStick.png" />
@@ -305,5 +305,10 @@
             <Font size="11.0" />
          </font>
       </Label>
+      <Button layoutX="448.0" layoutY="909.0" mnemonicParsing="false" onAction="#resetar" style="-fx-background-color: white;" text="RESET" textFill="#f50000">
+         <font>
+            <Font name="Liberation Mono Bold" size="24.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

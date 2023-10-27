@@ -130,7 +130,12 @@ public class MainController implements Initializable {
   public ImageView baqueta4;
 
   private ImageView[] baquetas;
-
+  private ImageView [] bateristaEscutando;
+  private ImageView [] bateristaTocando;
+  private ImageView [] bateristaEsperando;
+  private Slider[] velocidadeTocando;
+  private Slider[] velocidadeEscutando;
+  private Label [] estadoBaterista;
 
   public static final int N = 5; // define o no. de filosofos
   public static Filosofo[] filosofos = new Filosofo[N];
@@ -141,15 +146,25 @@ public class MainController implements Initializable {
   @Override
   public void initialize(URL url, ResourceBundle rb) {
     iniciar();
+
   }
 
   public void iniciar(){
+    velocidadeEscutando = new Slider[]{velBateristaOuvindo1, velBateristaOuvindo2, velBateristaOuvindo3, velBateristaOuvindo4, velBateristaOuvindo5};
+    velocidadeTocando = new Slider[] {velBateristaTocando1, velBateristaTocando2, velBateristaTocando3, velBateristaTocando4, velBateristaTocando5};
+    baquetas = new ImageView[]{ baqueta0, baqueta1, baqueta2, baqueta3, baqueta4};
+    estadoBaterista = new Label[] {estadoBaterista1, estadoBaterista2, estadoBaterista3, estadoBaterista4, estadoBaterista5};
+    bateristaEscutando = new ImageView[]{ bateristaEscutando1, bateristaEscutando2, bateristaEscutando3, bateristaEscutando4, bateristaEscutando5};
+    bateristaTocando = new ImageView[]{ bateristaTocando1, bateristaTocando2, bateristaTocando3, bateristaTocando4, bateristaTocando5};
+    bateristaEsperando = new ImageView[] {bateristaEsperando1, bateristaEsperando2, bateristaEsperando3, bateristaEsperando4, bateristaEsperando5};
+
     for(int i=0; i<N ;i++){
       forks [i] = new Semaphore(0);
       filosofos[i] = new Filosofo(i, this);
       states[i] = 0;
+      velocidadeEscutando[i].setValue(3);
+      velocidadeTocando[i].setValue(3);
     }
-
 
     for (int j=0; j<N; j++){
       filosofos[j].setNeighbours();
@@ -159,10 +174,22 @@ public class MainController implements Initializable {
     filosofos[2].start();
     filosofos[3].start();
     filosofos[4].start();
-    baquetas = new ImageView[]{ baqueta0, baqueta1, baqueta2, baqueta3, baqueta4};
   }
 
 
+  @FXML
+  public void resetar(){
+
+    interromperThreads();
+    iniciar();
+  }
+
+  public void interromperThreads() {
+    for (int i = 0; i < N; i++) {
+      filosofos[i].interrupt();
+      baquetas[i].setVisible(true);
+    }
+  }
 
   @FXML
   public void pauseBaterista1() {
@@ -216,148 +243,40 @@ public class MainController implements Initializable {
   }
 
   public int getVelocidadeOuvindo(int id){
-    switch (id){
-      case 0:
-        return (int) velBateristaOuvindo1.getValue();
-      case 1:
-        return (int) velBateristaOuvindo2.getValue();
-      case 2:
-        return (int) velBateristaOuvindo3.getValue();
-      case 3:
-        return (int) velBateristaOuvindo4.getValue();
-      case 4:
-        return (int) velBateristaOuvindo5.getValue();
-    }
-    return 0;
+    return (int) velocidadeEscutando[id].getValue();
   }
   public int getVelocidadeTocando(int id){
-    switch (id){
-      case 0:
-        return (int) velBateristaTocando1.getValue();
-      case 1:
-        return (int) velBateristaTocando2.getValue();
-      case 2:
-        return (int) velBateristaTocando3.getValue();
-      case 3:
-        return (int) velBateristaTocando4.getValue();
-      case 4:
-        return (int) velBateristaTocando5.getValue();
-    }
-    return 0;
+    return (int) velocidadeTocando[id].getValue();
   }
   public void setEstadoBaterista (int id, String estado){
-    switch (id){
-      case 0:
-        estadoBaterista1.setText(estado);
-        break;
-      case 1:
-        estadoBaterista2.setText(estado);
-        break;
-      case 2:
-        estadoBaterista3.setText(estado);
-        break;
-      case 3:
-        estadoBaterista4.setText(estado);
-        break;
-      case 4:
-        estadoBaterista5.setText(estado);
-        break;
-    }
+    estadoBaterista[id].setText(estado);
   }
 
   public void changeImageToPlaying(int id){
-    if(id==0){
-      bateristaEscutando1.setVisible(false);
-      bateristaTocando1.setVisible(true);
-      bateristaEsperando1.setVisible(false);
-    }
-    else if(id==1){
-      bateristaEscutando2.setVisible(false);
-      bateristaTocando2.setVisible(true);
-      bateristaEsperando2.setVisible(false);
-    }
-    else if(id==2){
-      bateristaEscutando3.setVisible(false);
-      bateristaTocando3.setVisible(true);
-      bateristaEsperando3.setVisible(false);
-    }
-    else if(id==3){
-      bateristaEscutando4.setVisible(false);
-      bateristaTocando4.setVisible(true);
-      bateristaEsperando4.setVisible(false);
-    }
-    else if(id==4){
-      bateristaEscutando5.setVisible(false);
-      bateristaTocando5.setVisible(true);
-      bateristaEsperando5.setVisible(false);
-    }
-
+    bateristaEscutando[id].setVisible(false);
+    bateristaEsperando[id].setVisible(false);
+    bateristaTocando[id].setVisible(true);
   }
 
   public void changeImageToListening(int id){
-    if(id==0){
-      bateristaTocando1.setVisible(false);
-      bateristaEscutando1.setVisible(true);
-      bateristaEsperando1.setVisible(false);
-    }
-    else if(id==1){
-      bateristaTocando2.setVisible(false);
-      bateristaEscutando2.setVisible(true);
-      bateristaEsperando2.setVisible(false);
-    }
-    else if(id==2){
-      bateristaTocando3.setVisible(false);
-      bateristaEscutando3.setVisible(true);
-      bateristaEsperando3.setVisible(false);
-    }
-    else if(id==3){
-      bateristaTocando4.setVisible(false);
-      bateristaEscutando4.setVisible(true);
-      bateristaEsperando4.setVisible(false);
-    }
-    else if(id==4){
-      bateristaTocando5.setVisible(false);
-      bateristaEscutando5.setVisible(true);
-      bateristaEsperando5.setVisible(false);
-    }
+    bateristaEscutando[id].setVisible(true);
+    bateristaEsperando[id].setVisible(false);
+    bateristaTocando[id].setVisible(false);
 
   }
 
   public void changeImageToWaiting(int id){
-    if(id==0){
-      bateristaEsperando1.setVisible(true);
-      bateristaTocando1.setVisible(false);
-      bateristaEscutando1.setVisible(false);
-    }
-    else if(id==1){
-      bateristaEsperando2.setVisible(true);
-      bateristaTocando2.setVisible(false);
-      bateristaEscutando2.setVisible(false);
-    }
-    else if(id==2){
-      bateristaEsperando3.setVisible(true);
-      bateristaTocando3.setVisible(false);
-      bateristaEscutando3.setVisible(false);
-    }
-    else if(id==3){
-      bateristaEsperando4.setVisible(true);
-      bateristaTocando4.setVisible(false);
-      bateristaEscutando4.setVisible(false);
-    }
-    else if(id==4){
-      bateristaEsperando5.setVisible(true);
-      bateristaTocando5.setVisible(false);
-      bateristaEscutando5.setVisible(false);
-    }
-
+    bateristaEscutando[id].setVisible(false);
+    bateristaEsperando[id].setVisible(true);
+    bateristaTocando[id].setVisible(false);
   }
 
   public void hideSticks(int id, int idRight){
     baquetas[id].setVisible(false);
     baquetas[idRight].setVisible(false);
   }
-  public void showSticks(int id, int idRight){
-    if (states[id]!=2){
+  public void showSticks(int id, int idLeft, int idRight){
+    if (states[id]!=2 && states[idLeft]!=2){
       baquetas[id].setVisible(true);
     }
     if (states[idRight]!=2) {

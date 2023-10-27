@@ -18,7 +18,7 @@ public class Filosofo extends Thread{
 
   @Override
   public void run() {
-    while(true) {
+    while(!Thread.interrupted()) {
       think();
       take_forks();
       eat();
@@ -45,20 +45,21 @@ public class Filosofo extends Thread{
       test(this);
       MainController.mutex.release();
       MainController.forks[this.id].acquire();
+      Platform.runLater(() -> control.hideSticks(this.id, right.id));
     } catch (InterruptedException e) {
     }
 
   }
   private void eat() {
     Platform.runLater(() -> control.changeImageToPlaying(this.id));
-    Platform.runLater(() -> control.setEstadoBaterista(this.id, "Tocando"));
+    Platform.runLater(() -> control.setEstadoBaterista(this.id, "Tocando Rock!"));
     sleepTime(control.getVelocidadeTocando(this.id));
     pausando();
   }
   private void put_forks(){
     try {
       pausando();
-      Platform.runLater(() -> control.showSticks(this.id, right.id));
+      Platform.runLater(() -> control.showSticks(this.id, left.id, right.id));
       MainController.mutex.acquire();
       MainController.states[this.id] = 0;
       test(left);
@@ -75,7 +76,6 @@ public class Filosofo extends Thread{
       && MainController.states[filosofo.right.id] != 2) {
       MainController.states[filosofo.id] = 2;
       MainController.forks[filosofo.id].release();
-      Platform.runLater(() -> control.hideSticks(this.id, right.id));
     }
   }
 
@@ -91,7 +91,7 @@ public class Filosofo extends Thread{
     pausando();
   }
   private void pausando(){
-    while (pausada){
+    while (pausada && !Thread.interrupted()){
       sleepTime(1);
     }
   }
