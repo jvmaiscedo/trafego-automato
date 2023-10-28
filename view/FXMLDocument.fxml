@@ -305,7 +305,7 @@
             <Font size="11.0" />
          </font>
       </Label>
-      <Button layoutX="448.0" layoutY="909.0" mnemonicParsing="false" onAction="#resetar" style="-fx-background-color: white;" text="RESET" textFill="#f50000">
+      <Button layoutX="448.0" layoutY="875.0" mnemonicParsing="false" onAction="#resetar" style="-fx-background-color: white;" text="RESET" textFill="#f50000">
          <font>
             <Font name="Liberation Mono Bold" size="24.0" />
          </font>
