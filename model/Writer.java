@@ -4,9 +4,11 @@ import controller.MainController;
 import javafx.application.Platform;
 
 public class Writer extends Thread{
-  
+  private static final String [] text = new String[]{"Prova AED", "Enforcou a sexta", "Reunião departamento", "Trabalho PC", "M"};
   private int id;
   private MainController control;
+  private boolean isPaused;
+
   public Writer(int n, MainController control){
     this.id = n;
     this.control = control;
@@ -17,7 +19,6 @@ public class Writer extends Thread{
   public void run() {
     while (true){
       try {
-        System.out.println("escritor");
         thinkUpData();
         MainController.db.acquire();
         writeDataBase();
@@ -29,15 +30,17 @@ public class Writer extends Thread{
 
 
   private void writeDataBase() {
-    System.out.println("escrevi");
     Platform.runLater(()-> control.changeProfessorWritedb(this.id));
-    Platform.runLater(()-> control.setDataBaseText("prova dia 13/10"));
-    sleepTime(1);
+    System.out.println(control.getDataBaseText());
+    Platform.runLater(()-> control.setDataBaseText(control.getDataBaseText()+"\n"+text[this.id]));
+    sleepTime(control.writingData(this.id));
+    pausando();
   }
 
   private void thinkUpData() {
     Platform.runLater(()-> control.changeProfessorThink(this.id));
-    sleepTime(4);
+    sleepTime(control.thinkingData(this.id));
+    pausando();
   }
 
   public void sleepTime(int time){
@@ -46,4 +49,33 @@ public class Writer extends Thread{
     } catch (InterruptedException e) {
     }
   }
+  private void pausando(){
+    while (isPaused && !Thread.interrupted()){
+      sleepTime(1);
+    }
+  }
+
+  /* ***************************************************************
+   * Metodo: pausar
+   * Funcao: Modifica a flag responsavel por pausar o processo para
+   *         que este seja pausado.
+   * Parametros: Sem parametro.
+   * Retorno: Sem retorno.
+   *************************************************************** */
+  public void pausar(){
+    isPaused = true;
+
+  }
+
+  /* ***************************************************************
+   * Metodo: retomar
+   * Funcao: Modifica a flag responsavel por pausar o processo para
+   *         que este seja retomado.
+   * Parametros: Sem parametro.
+   * Retorno: Sem retorno.
+   *************************************************************** */
+  public void retomar(){
+    isPaused = false;
+  }
 }
+

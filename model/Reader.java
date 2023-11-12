@@ -7,6 +7,7 @@ public class Reader extends Thread{
 
   private int id;
   private MainController control;
+  private boolean isPaused;
 
   public Reader(int n, MainController control){
     this.id = n;
@@ -42,14 +43,16 @@ public class Reader extends Thread{
   private void useDataRead() {
     Platform.runLater(()-> control.changeStudentUdr(this.id));
     Platform.runLater(()-> control.setDrTextStudent(this.id, control.getDataBaseText()));
-    sleepTime(2);
+    sleepTime(control.usingDr(this.id));
+    pausando();
 
   }
 
   private void readDataBase() {
     Platform.runLater(()-> control.setDrTextStudent(this.id,""));
     Platform.runLater(()-> control.changeStudentRead(this.id));
-    sleepTime(2);
+    sleepTime(control.readingData(this.id));
+    pausando();
   }
   public void sleepTime(int time){
     try {
@@ -57,4 +60,33 @@ public class Reader extends Thread{
     } catch (InterruptedException e) {
     }
   }
+  private void pausando(){
+    while (isPaused && !Thread.interrupted()){
+      sleepTime(1);
+    }
+  }
+
+  /* ***************************************************************
+   * Metodo: pausar
+   * Funcao: Modifica a flag responsavel por pausar o processo para
+   *         que este seja pausado.
+   * Parametros: Sem parametro.
+   * Retorno: Sem retorno.
+   *************************************************************** */
+  public void pausar(){
+    isPaused = true;
+
+  }
+
+  /* ***************************************************************
+   * Metodo: retomar
+   * Funcao: Modifica a flag responsavel por pausar o processo para
+   *         que este seja retomado.
+   * Parametros: Sem parametro.
+   * Retorno: Sem retorno.
+   *************************************************************** */
+  public void retomar(){
+    isPaused = false;
+  }
+
 }
