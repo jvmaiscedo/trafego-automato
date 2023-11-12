@@ -4,10 +4,10 @@ import controller.MainController;
 import javafx.application.Platform;
 
 public class Writer extends Thread{
-  private static final String [] text = new String[]{"Prova AED", "Enforcou a sexta", "Reunião departamento", "Trabalho PC", "M"};
+  private static final String [] text = new String[]{"Prova AED", "Enforcou a sexta", "Reunião de departamento", "Trabalho PC", "Marlos postou nota"};
   private int id;
   private MainController control;
-  private boolean isPaused;
+  private volatile boolean isPaused = false;
 
   public Writer(int n, MainController control){
     this.id = n;
@@ -31,8 +31,12 @@ public class Writer extends Thread{
 
   private void writeDataBase() {
     Platform.runLater(()-> control.changeProfessorWritedb(this.id));
-    System.out.println(control.getDataBaseText());
-    Platform.runLater(()-> control.setDataBaseText(control.getDataBaseText()+"\n"+text[this.id]));
+    if (this.id%2==0) {
+      Platform.runLater(()-> control.setDataBaseText(text[this.id]));
+    }
+    else{
+      Platform.runLater(()-> control.setDataBaseText(control.getDataBaseText()+"\n"+text[this.id]));
+    }
     sleepTime(control.writingData(this.id));
     pausando();
   }

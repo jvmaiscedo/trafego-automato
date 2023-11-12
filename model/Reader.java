@@ -7,7 +7,8 @@ public class Reader extends Thread{
 
   private int id;
   private MainController control;
-  private boolean isPaused;
+  private String text;
+  private volatile boolean isPaused = false;
 
   public Reader(int n, MainController control){
     this.id = n;
@@ -42,15 +43,16 @@ public class Reader extends Thread{
 
   private void useDataRead() {
     Platform.runLater(()-> control.changeStudentUdr(this.id));
-    Platform.runLater(()-> control.setDrTextStudent(this.id, control.getDataBaseText()));
+    Platform.runLater(()-> control.setDrTextStudent(this.id, this.text));
     sleepTime(control.usingDr(this.id));
     pausando();
-
+    Platform.runLater(()-> control.setDrTextStudent(this.id,""));
+    Platform.runLater(()-> control.changeStudent(this.id));
   }
 
   private void readDataBase() {
-    Platform.runLater(()-> control.setDrTextStudent(this.id,""));
     Platform.runLater(()-> control.changeStudentRead(this.id));
+    text = control.getDataBaseText();
     sleepTime(control.readingData(this.id));
     pausando();
   }

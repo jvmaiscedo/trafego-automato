@@ -27,21 +27,31 @@ public class MainController implements Initializable {
   @FXML
   ImageView student1back;
   @FXML
+  ImageView student1front;
+  @FXML
   ImageView student1udr;
   @FXML
   ImageView student2back;
+  @FXML
+  ImageView student2front;
   @FXML
   ImageView student2udr;
   @FXML
   ImageView student3back;
   @FXML
+  ImageView student3front;
+  @FXML
   ImageView student3udr;
   @FXML
   ImageView student4back;
   @FXML
+  ImageView student4front;
+  @FXML
   ImageView student4udr;
   @FXML
   ImageView student5back;
+  @FXML
+  ImageView student5front;
   @FXML
   ImageView student5udr;
   @FXML
@@ -82,45 +92,25 @@ public class MainController implements Initializable {
   //Elementos de controle
   //professor 1
   @FXML
-  Button pauseProf1;
-  @FXML
-  Button retomarProf1;
-  @FXML
   Slider thinkingData1;
   @FXML
   Slider writingData1;
   //professor 2
-  @FXML
-  Button pauseProf2;
-  @FXML
-  Button retomarProf2;
   @FXML
   Slider thinkingData2;
   @FXML
   Slider writingData2;
   //professor 3
   @FXML
-  Button pauseProf3;
-  @FXML
-  Button retomarProf3;
-  @FXML
   Slider thinkingData3;
   @FXML
   Slider writingData3;
   //professor 4
   @FXML
-  Button pauseProf4;
-  @FXML
-  Button retomarProf4;
-  @FXML
   Slider thinkingData4;
   @FXML
   Slider writingData4;
   //professor 5
-  @FXML
-  Button pauseProf5;
-  @FXML
-  Button retomarProf5;
   @FXML
   Slider thinkingData5;
   @FXML
@@ -128,45 +118,25 @@ public class MainController implements Initializable {
 
   //aluno 1
   @FXML
-  Button pauseStudent1;
-  @FXML
-  Button retomarStudent1;
-  @FXML
   Slider usingDr1;
   @FXML
   Slider readingData1;
   //aluno 2
-  @FXML
-  Button pauseStudent2;
-  @FXML
-  Button retomarStudent2;
   @FXML
   Slider usingDr2;
   @FXML
   Slider readingData2;
   //aluno 3
   @FXML
-  Button pauseStudent3;
-  @FXML
-  Button retomarStudent3;
-  @FXML
   Slider usingDr3;
   @FXML
   Slider readingData3;
   //aluno 4
   @FXML
-  Button pauseStudent4;
-  @FXML
-  Button retomarStudent4;
-  @FXML
   Slider usingDr4;
   @FXML
   Slider readingData4;
   //aluno 5
-  @FXML
-  Button pauseStudent5;
-  @FXML
-  Button retomarStudent5;
   @FXML
   Slider usingDr5;
   @FXML
@@ -183,6 +153,7 @@ public class MainController implements Initializable {
   public ImageView [] professorBack;
   public ImageView [] studentUdr;
   public ImageView [] studentBack;
+  public ImageView [] studentFront;
   public Label [] drTextStudent;
   public Slider [] thinkingData;
   public Slider [] writingData;
@@ -195,6 +166,7 @@ public class MainController implements Initializable {
 
     studentUdr = new ImageView[]{student1udr, student2udr, student3udr, student4udr, student5udr};
     studentBack = new ImageView[]{student1back, student2back, student3back, student4back, student5back};
+    studentFront = new ImageView[]{student1front, student2front, student3front, student4front, student5front};
     drTextStudent = new Label[]{drTextStudent1, drTextStudent2, drTextStudent3, drTextStudent4, drTextStudent5};
     professorFront = new ImageView[]{professor1front, professor2front, professor3front, professor4front, professor5front};
     professorBack = new ImageView[] {professor1back, professor2back, professor3back, professor4back, professor5back};
@@ -235,10 +207,17 @@ public class MainController implements Initializable {
   public void changeStudentUdr(int id){
     studentUdr[id].setVisible(true);
     studentBack[id].setVisible(false);
+    studentFront[id].setVisible(false);
+  }
+  public void changeStudent(int id){
+    studentUdr[id].setVisible(false);
+    studentBack[id].setVisible(false);
+    studentFront[id].setVisible(true);
   }
   public void changeStudentRead(int id){
     studentUdr[id].setVisible(false);
     studentBack[id].setVisible(true);
+    studentFront[id].setVisible(false);
   }
   public void setDrTextStudent(int id, String text){
     drTextStudent[id].setText(text);
@@ -300,5 +279,47 @@ public class MainController implements Initializable {
   public void retomarProf5(){
     professor[4].retomar();
   }
+  @FXML
+  public void pauseStudent1(){
+    estudante[0].pausar();
+    System.out.println("fui clicado");
+  }
+  @FXML
+  public void retomarStudent1(){
+    estudante[0].retomar();
+  }
+  @FXML
+  public void pauseStudent2(){
+    estudante[1].pausar();
+  }
+  @FXML
+  public void retomarStudent2(){
+    estudante[1].retomar();
+  }
+  @FXML
+  public void pauseStudent3(){
+    estudante[2].pausar();
+  }
+  @FXML
+  public void retomarStudent3(){
+    estudante[2].retomar();
+  }
+  @FXML
+  public void pauseStudent4(){
+    estudante[3].pausar();
+  }
+  @FXML
+  public void retomarStudent4(){
+    estudante[3].retomar();
+  }
+  @FXML
+  public void pauseStudent5(){
+    estudante[4].pausar();
+  }
+  @FXML
+  public void retomarStudent5(){
+    estudante[4].retomar();
+  }
+
 
 }

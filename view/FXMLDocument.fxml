@@ -35,7 +35,7 @@
             <Image url="@../img/student1back.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="student2udr" fitHeight="237.0" fitWidth="124.0" layoutX="652.0" layoutY="223.0" pickOnBounds="true" preserveRatio="true" visible="false">
+      <ImageView fx:id="student2udr" fitHeight="237.0" fitWidth="124.0" layoutX="697.0" layoutY="223.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@../img/student2udr.png" />
          </image>
@@ -45,7 +45,7 @@
             <Image url="@../img/student2back.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="student3udr" fitHeight="237.0" fitWidth="124.0" layoutX="695.0" layoutY="259.0" pickOnBounds="true" preserveRatio="true" visible="false">
+      <ImageView fx:id="student3udr" fitHeight="237.0" fitWidth="124.0" layoutX="692.0" layoutY="-26.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@../img/student3udr.png" />
          </image>
@@ -65,7 +65,7 @@
             <Image url="@../img/student4back.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="student5udr" fitHeight="237.0" fitWidth="124.0" layoutX="607.0" layoutY="199.0" pickOnBounds="true" visible="false">
+      <ImageView fx:id="student5udr" fitHeight="237.0" fitWidth="124.0" layoutX="608.0" layoutY="23.0" pickOnBounds="true" visible="false">
          <image>
             <Image url="@../img/student5udr.png" />
          </image>
@@ -95,33 +95,33 @@
             <Image url="@../img/professor5back.png" />
          </image>
       </ImageView>
-      <Label fx:id="dataBaseText" layoutX="413.0" layoutY="132.0" prefHeight="93.0" prefWidth="72.0" rotate="9.5" textFill="WHITE">
+      <Label fx:id="dataBaseText" alignment="TOP_LEFT" contentDisplay="TOP" graphicTextGap="2.0" layoutX="413.0" layoutY="132.0" prefHeight="93.0" prefWidth="72.0" rotate="9.5" textFill="WHITE">
          <font>
             <Font name="KacstDigital" size="8.0" />
          </font></Label>
-      <Label fx:id="drTextStudent1" layoutX="705.0" layoutY="135.0" prefHeight="16.0" prefWidth="26.0">
+      <Label fx:id="drTextStudent1" contentDisplay="TOP" graphicTextGap="2.0" layoutX="690.0" layoutY="135.0" prefHeight="28.0" prefWidth="49.0">
          <font>
-            <Font size="7.0" />
+            <Font size="6.0" />
          </font>
       </Label>
-      <Label fx:id="drTextStudent2" layoutX="718.0" layoutY="252.0" prefHeight="16.0" prefWidth="26.0">
+      <Label fx:id="drTextStudent2" contentDisplay="TOP" graphicTextGap="2.0" layoutX="751.0" layoutY="257.0" prefHeight="28.0" prefWidth="49.0">
          <font>
-            <Font size="4.0" />
+            <Font size="6.0" />
          </font>
       </Label>
-      <Label fx:id="drTextStudent3" layoutX="758.0" layoutY="288.0" prefHeight="16.0" prefWidth="26.0">
+      <Label fx:id="drTextStudent3" contentDisplay="TOP" graphicTextGap="2.0" layoutX="746.0" layoutY="9.0" prefHeight="28.0" prefWidth="49.0">
          <font>
-            <Font size="4.0" />
+            <Font size="6.0" />
          </font>
       </Label>
-      <Label fx:id="drTextStudent4" layoutX="758.0" layoutY="127.0" prefHeight="16.0" prefWidth="26.0">
+      <Label fx:id="drTextStudent4" contentDisplay="TOP" graphicTextGap="2.0" layoutX="745.0" layoutY="127.0" prefHeight="28.0" prefWidth="49.0">
          <font>
-            <Font size="4.0" />
+            <Font size="6.0" />
          </font>
       </Label>
-      <Label fx:id="drTextStudent5" layoutX="682.0" layoutY="236.0" prefHeight="16.0" prefWidth="26.0">
+      <Label fx:id="drTextStudent5" contentDisplay="TOP" graphicTextGap="2.0" layoutX="671.0" layoutY="56.0" prefHeight="28.0" prefWidth="49.0">
          <font>
-            <Font size="4.0" />
+            <Font size="6.0" />
          </font>
       </Label>
       <ImageView fx:id="professor2front" fitHeight="140.0" fitWidth="77.0" layoutX="29.0" layoutY="239.0" pickOnBounds="true" preserveRatio="true" visible="false">
@@ -144,7 +144,7 @@
             <Image url="@../img/professor5front.png" />
          </image>
       </ImageView>
-      <Button fx:id="pauseProf1" layoutX="61.0" layoutY="536.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="26.0">
+      <Button layoutX="61.0" layoutY="536.0" mnemonicParsing="false" onAction="#pauseProf1" prefHeight="26.0" prefWidth="26.0">
          <graphic>
             <ImageView fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -158,7 +158,7 @@
       </Button>
       <Slider fx:id="thinkingData1" layoutX="59.0" layoutY="568.0" max="10.0" min="1.0" prefHeight="16.0" prefWidth="65.0" rotate="180.0" style="-fx-background-color: green;" />
       <Slider fx:id="writingData1" layoutX="59.0" layoutY="586.0" max="10.0" min="1.0" prefHeight="16.0" prefWidth="65.0" rotate="180.0" style="-fx-background-color: red;" />
-      <Button fx:id="retomarProf1" layoutX="92.0" layoutY="536.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="26.0">
+      <Button layoutX="92.0" layoutY="536.0" mnemonicParsing="false" onAction="#retomarProf1" prefHeight="26.0" prefWidth="26.0">
          <font>
             <Font size="1.0" />
          </font>
@@ -170,7 +170,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="pauseProf2" layoutX="61.0" layoutY="620.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="26.0">
+      <Button layoutX="61.0" layoutY="620.0" mnemonicParsing="false" onAction="#pauseProf2" prefHeight="26.0" prefWidth="26.0">
          <font>
             <Font size="1.0" />
          </font>
@@ -182,7 +182,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="retomarProf2" layoutX="92.0" layoutY="620.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="26.0">
+      <Button layoutX="92.0" layoutY="620.0" mnemonicParsing="false" onAction="#retomarProf2" prefHeight="26.0" prefWidth="26.0">
          <font>
             <Font size="1.0" />
          </font>
@@ -196,7 +196,7 @@
       </Button>
       <Slider fx:id="thinkingData2" layoutX="61.0" layoutY="652.0" max="10.0" min="1.0" prefHeight="16.0" prefWidth="65.0" rotate="180.0" style="-fx-background-color: green;" />
       <Slider fx:id="writingData2" layoutX="61.0" layoutY="670.0" max="10.0" min="1.0" prefHeight="16.0" prefWidth="65.0" rotate="180.0" style="-fx-background-color: red;" />
-      <Button fx:id="pauseProf3" layoutX="61.0" layoutY="702.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="26.0">
+      <Button layoutX="61.0" layoutY="702.0" mnemonicParsing="false" onAction="#pauseProf3" prefHeight="26.0" prefWidth="26.0">
          <font>
             <Font size="1.0" />
          </font>
@@ -208,7 +208,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="retomarProf3" layoutX="92.0" layoutY="702.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="26.0">
+      <Button layoutX="92.0" layoutY="702.0" mnemonicParsing="false" onAction="#retomarProf3" prefHeight="26.0" prefWidth="26.0">
          <font>
             <Font size="1.0" />
          </font>
@@ -222,7 +222,7 @@
       </Button>
       <Slider fx:id="thinkingData3" layoutX="61.0" layoutY="734.0" max="10.0" min="1.0" prefHeight="16.0" prefWidth="65.0" rotate="180.0" style="-fx-background-color: green;" />
       <Slider fx:id="writingData3" layoutX="61.0" layoutY="752.0" max="10.0" min="1.0" prefHeight="16.0" prefWidth="65.0" rotate="180.0" style="-fx-background-color: red;" />
-      <Button fx:id="pauseProf4" layoutX="231.0" layoutY="537.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="26.0">
+      <Button layoutX="231.0" layoutY="537.0" mnemonicParsing="false" onAction="#pauseProf4" prefHeight="26.0" prefWidth="26.0">
          <font>
             <Font size="1.0" />
          </font>
@@ -234,7 +234,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="retomarProf4" layoutX="262.0" layoutY="537.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="26.0">
+      <Button layoutX="262.0" layoutY="537.0" mnemonicParsing="false" onAction="#retomarProf4" prefHeight="26.0" prefWidth="26.0">
          <font>
             <Font size="1.0" />
          </font>
@@ -248,7 +248,7 @@
       </Button>
       <Slider fx:id="thinkingData4" layoutX="230.0" layoutY="568.0" max="10.0" min="1.0" prefHeight="16.0" prefWidth="65.0" rotate="180.0" style="-fx-background-color: green;" />
       <Slider fx:id="writingData4" layoutX="230.0" layoutY="586.0" max="10.0" min="1.0" prefHeight="16.0" prefWidth="65.0" rotate="180.0" style="-fx-background-color: red;" />
-      <Button fx:id="pauseProf5" layoutX="231.0" layoutY="702.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="26.0">
+      <Button layoutX="231.0" layoutY="702.0" mnemonicParsing="false" onAction="#pauseProf5" prefHeight="26.0" prefWidth="26.0">
          <font>
             <Font size="1.0" />
          </font>
@@ -260,7 +260,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="retomarProf5" layoutX="262.0" layoutY="702.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="26.0">
+      <Button layoutX="262.0" layoutY="702.0" mnemonicParsing="false" onAction="#retomarProf5" prefHeight="26.0" prefWidth="26.0">
          <font>
             <Font size="1.0" />
          </font>
@@ -274,7 +274,7 @@
       </Button>
       <Slider fx:id="thinkingData5" layoutX="230.0" layoutY="734.0" max="10.0" min="1.0" prefHeight="16.0" prefWidth="65.0" rotate="180.0" style="-fx-background-color: green;" />
       <Slider fx:id="writingData5" layoutX="230.0" layoutY="752.0" max="10.0" min="1.0" prefHeight="16.0" prefWidth="65.0" rotate="180.0" style="-fx-background-color: red;" />
-      <Button fx:id="pauseStudent1" layoutX="514.0" layoutY="536.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="26.0">
+      <Button layoutX="514.0" layoutY="536.0" mnemonicParsing="false" onAction="#pauseStudent1" prefHeight="26.0" prefWidth="26.0">
          <font>
             <Font size="1.0" />
          </font>
@@ -286,7 +286,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="retomarStudent1" layoutX="545.0" layoutY="536.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="26.0">
+      <Button layoutX="545.0" layoutY="536.0" mnemonicParsing="false" onAction="#retomarStudent1" prefHeight="26.0" prefWidth="26.0">
          <font>
             <Font size="1.0" />
          </font>
@@ -300,7 +300,7 @@
       </Button>
       <Slider fx:id="usingDr1" layoutX="514.0" layoutY="568.0" max="10.0" min="1.0" prefHeight="16.0" prefWidth="65.0" rotate="180.0" style="-fx-background-color: green;" />
       <Slider fx:id="readingData1" layoutX="514.0" layoutY="586.0" max="10.0" min="1.0" prefHeight="16.0" prefWidth="65.0" rotate="180.0" style="-fx-background-color: red;" />
-      <Button fx:id="pauseStudent2" layoutX="514.0" layoutY="620.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="26.0">
+      <Button layoutX="514.0" layoutY="620.0" mnemonicParsing="false" onAction="#pauseStudent2" prefHeight="26.0" prefWidth="26.0">
          <font>
             <Font size="1.0" />
          </font>
@@ -312,7 +312,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="retomarStudent2" layoutX="545.0" layoutY="620.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="26.0">
+      <Button layoutX="545.0" layoutY="620.0" mnemonicParsing="false" onAction="#retomarStudent2" prefHeight="26.0" prefWidth="26.0">
          <font>
             <Font size="1.0" />
          </font>
@@ -326,7 +326,7 @@
       </Button>
       <Slider fx:id="usingDr2" layoutX="514.0" layoutY="652.0" max="10.0" min="1.0" prefHeight="16.0" prefWidth="65.0" rotate="180.0" style="-fx-background-color: green;" />
       <Slider fx:id="readingData2" layoutX="514.0" layoutY="670.0" max="10.0" min="1.0" prefHeight="16.0" prefWidth="65.0" rotate="180.0" style="-fx-background-color: red;" />
-      <Button fx:id="pauseStudent3" layoutX="514.0" layoutY="702.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="26.0">
+      <Button layoutX="514.0" layoutY="702.0" mnemonicParsing="false" onAction="#pauseStudent3" prefHeight="26.0" prefWidth="26.0">
          <font>
             <Font size="1.0" />
          </font>
@@ -338,7 +338,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="retomarStudent3" layoutX="545.0" layoutY="702.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="26.0">
+      <Button layoutX="545.0" layoutY="702.0" mnemonicParsing="false" onAction="#retomarStudent3" prefHeight="26.0" prefWidth="26.0">
          <font>
             <Font size="1.0" />
          </font>
@@ -352,7 +352,7 @@
       </Button>
       <Slider fx:id="usingDr3" layoutX="514.0" layoutY="734.0" max="10.0" min="1.0" prefHeight="16.0" prefWidth="65.0" rotate="180.0" style="-fx-background-color: green;" />
       <Slider fx:id="readingData3" layoutX="514.0" layoutY="752.0" max="10.0" min="1.0" prefHeight="16.0" prefWidth="65.0" rotate="180.0" style="-fx-background-color: red;" />
-      <Button fx:id="pauseStudent4" layoutX="684.0" layoutY="537.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="26.0">
+      <Button layoutX="684.0" layoutY="537.0" mnemonicParsing="false" onAction="#pauseStudent4" prefHeight="26.0" prefWidth="26.0">
          <font>
             <Font size="1.0" />
          </font>
@@ -364,7 +364,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="retomarStudent4" layoutX="715.0" layoutY="537.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="26.0">
+      <Button layoutX="715.0" layoutY="537.0" mnemonicParsing="false" onAction="#retomarStudent4" prefHeight="26.0" prefWidth="26.0">
          <font>
             <Font size="1.0" />
          </font>
@@ -378,7 +378,7 @@
       </Button>
       <Slider fx:id="usingDr4" layoutX="686.0" layoutY="568.0" max="10.0" min="1.0" prefHeight="16.0" prefWidth="65.0" rotate="180.0" style="-fx-background-color: green;" />
       <Slider fx:id="readingData4" layoutX="686.0" layoutY="586.0" max="10.0" min="1.0" prefHeight="16.0" prefWidth="65.0" rotate="180.0" style="-fx-background-color: red;" />
-      <Button fx:id="pauseStudent5" layoutX="684.0" layoutY="702.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="26.0">
+      <Button layoutX="684.0" layoutY="702.0" mnemonicParsing="false" onAction="#pauseStudent5" prefHeight="26.0" prefWidth="26.0">
          <font>
             <Font size="1.0" />
          </font>
@@ -390,7 +390,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="retomarStudent5" layoutX="715.0" layoutY="702.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="26.0">
+      <Button layoutX="715.0" layoutY="702.0" mnemonicParsing="false" onAction="#retomarStudent5" prefHeight="26.0" prefWidth="26.0">
          <font>
             <Font size="1.0" />
          </font>
@@ -404,5 +404,30 @@
       </Button>
       <Slider fx:id="usingDr5" layoutX="686.0" layoutY="734.0" max="10.0" min="1.0" prefHeight="16.0" prefWidth="65.0" rotate="180.0" style="-fx-background-color: green;" />
       <Slider fx:id="readingData5" layoutX="686.0" layoutY="752.0" max="10.0" min="1.0" prefHeight="16.0" prefWidth="65.0" rotate="180.0" style="-fx-background-color: red;" />
+      <ImageView fx:id="student1front" fitHeight="117.0" fitWidth="58.0" layoutX="642.0" layoutY="272.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../img/student1front.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="student2front" fitHeight="117.0" fitWidth="58.0" layoutX="660.0" layoutY="283.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../img/student2front.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="student3front" fitHeight="117.0" fitWidth="58.0" layoutX="674.0" layoutY="297.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../img/student3front.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="student4front" fitHeight="117.0" fitWidth="58.0" layoutX="695.0" layoutY="307.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../img/student4front.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="student5front" fitHeight="117.0" fitWidth="58.0" layoutX="643.0" layoutY="307.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../img/student5front.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
