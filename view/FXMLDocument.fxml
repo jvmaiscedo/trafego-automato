@@ -95,7 +95,7 @@
             <Image url="@../img/professor5back.png" />
          </image>
       </ImageView>
-      <Label fx:id="dataBaseText" alignment="TOP_LEFT" contentDisplay="TOP" graphicTextGap="2.0" layoutX="413.0" layoutY="132.0" prefHeight="93.0" prefWidth="72.0" rotate="9.5" textFill="WHITE">
+      <Label fx:id="dataBaseText" alignment="TOP_LEFT" contentDisplay="TOP" graphicTextGap="2.0" layoutX="418.0" layoutY="141.0" prefHeight="82.0" prefWidth="65.0" rotate="9.5" textFill="WHITE">
          <font>
             <Font name="KacstDigital" size="8.0" />
          </font></Label>
@@ -429,5 +429,17 @@
             <Image url="@../img/student5front.png" />
          </image>
       </ImageView>
+      <Button layoutX="371.0" layoutY="758.0" mnemonicParsing="false" onAction="#restart" prefHeight="40.0" prefWidth="80.0">
+         <graphic>
+            <ImageView fitHeight="40.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/restart.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font size="1.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

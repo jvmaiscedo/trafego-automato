@@ -14,7 +14,6 @@ import java.util.ResourceBundle;
 import java.util.concurrent.Semaphore;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.image.ImageView;
@@ -142,9 +141,9 @@ public class MainController implements Initializable {
   @FXML
   Slider readingData5;
 
-  public static Semaphore mutex = new Semaphore(1);
-  public static int rc = 0;
-  public static Semaphore db = new Semaphore(1);
+  public static Semaphore mutex;
+  public volatile static int rc;
+  public static Semaphore db;
 
   public Reader [] estudante = new Reader[5];
   public Writer [] professor = new Writer[5];
@@ -162,7 +161,16 @@ public class MainController implements Initializable {
 
   @Override
   public void initialize(URL url, ResourceBundle rb) {
+    iniciar();
+  }
 
+  public void iniciar(){
+    mutex = new Semaphore(1);
+    db = new Semaphore(1);
+    rc = 0;
+    System.out.println("mutex: "+mutex.availablePermits());
+    System.out.println("db: "+ db.availablePermits());
+    System.out.println("rc: " +rc);
 
     studentUdr = new ImageView[]{student1udr, student2udr, student3udr, student4udr, student5udr};
     studentBack = new ImageView[]{student1back, student2back, student3back, student4back, student5back};
@@ -188,8 +196,36 @@ public class MainController implements Initializable {
       estudante[j].start();
       professor[j].start();
     }
+  }
 
+  @FXML
+  public void restart(){
+    interromperThreads();
+    iniciar();
+  }
 
+  /* ***************************************************************
+   * Metodo: interromperThreads
+   * Funcao: Interrompe as threads.
+   * Parametros: Sem parametros
+   * Retorno: Sem retorno.
+   *************************************************************** */
+  public void interromperThreads() {
+    for (int j=0; j<5;j++){
+      estudante[j].pausar();
+      professor[j].pausar();
+    }
+    for (int i = 0; i < 5; i++) {
+      estudante[i].interrupt();
+      professor[i].interrupt();
+      drTextStudent[i].setText("");
+      professorFront[i].setVisible(false);
+      professorBack[i].setVisible(false);
+      studentUdr[i].setVisible(false);
+      studentBack[i].setVisible(false);
+      studentFront[i].setVisible(false);
+    }
+    dataBaseText.setText("");
   }
 
   public int thinkingData(int id){

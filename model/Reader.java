@@ -17,7 +17,7 @@ public class Reader extends Thread{
 
   @Override
   public void run() {
-    while (true){
+    while (!Thread.interrupted()){
       try {
         MainController.mutex.acquire();
         MainController.rc+=1;
