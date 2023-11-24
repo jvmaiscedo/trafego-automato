@@ -11,14 +11,24 @@
             <Image url="@../img/background.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="redCar" fitHeight="59.0" fitWidth="30.0" layoutX="20.0" layoutY="-8.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
+      <ImageView fx:id="redCar" fitHeight="59.0" fitWidth="30.0" layoutX="726.0" layoutY="-8.0" pickOnBounds="true" preserveRatio="true" rotate="270.0">
          <image>
             <Image url="@../img/redCar.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="greenCar" fitHeight="59.0" fitWidth="30.0" layoutX="321.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true" rotate="180.0">
+      <ImageView fx:id="greenCar" fitHeight="59.0" fitWidth="30.0" layoutX="321.0" layoutY="196.0" pickOnBounds="true" preserveRatio="true" rotate="180.0">
          <image>
             <Image url="@../img/greenCar.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="orangeCar" fitHeight="59.0" fitWidth="30.0" layoutX="46.0" layoutY="469.0" pickOnBounds="true" preserveRatio="true" rotate="90.0" visible="false">
+         <image>
+            <Image url="@../img/orangeCar.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="pinkCar" fitHeight="59.0" fitWidth="30.0" layoutX="475.0" layoutY="390.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/pinkCar.png" />
          </image>
       </ImageView>
    </children>

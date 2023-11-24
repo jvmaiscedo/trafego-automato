@@ -14,11 +14,9 @@ import java.util.ResourceBundle;
 import java.util.concurrent.Semaphore;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import javafx.scene.control.Slider;
 import javafx.scene.image.ImageView;
 import model.Car;
-import model.Move;
+import model.Semaforo;
 
 
 public class MainController implements Initializable {
@@ -27,30 +25,33 @@ public class MainController implements Initializable {
   ImageView redCar;
   @FXML
   ImageView greenCar;
-
+  @FXML
+  ImageView orangeCar;
   Car carroVermelho;
   Car carroVerde;
-  Move mover;
+  Car carroLaranja;
+  Semaforo mover;
   String [] moverRedCar;
   double [] limRedCar;
   String [] moverGreenCar;
   double [] limGreenCar;
   public static Semaphore semaforo1 = new Semaphore(0);
   public static Semaphore semaforo2 = new Semaphore(1);
+
   @Override
   public void initialize(URL url, ResourceBundle rb) {
 
-    mover = new Move();
+    mover = new Semaforo();
     moverRedCar = new String[] {"r","d","l","u"};
     limRedCar = new double[]{759,748,15,-8};
     moverGreenCar = new String[] {"d","r","d","l","u","r"};
     limGreenCar = new double[]{455,759,748,14,-8,313};
-    carroVermelho = new Car(redCar, 1, 20,-8,this, moverRedCar, limRedCar);
-    carroVerde = new Car(greenCar, 2,321,33,this, moverGreenCar, limGreenCar);
-
+    carroVermelho = new Car(redCar, 1, 726,-8,this);
+    carroVerde = new Car(greenCar, 2,321,33,this);
+    carroLaranja = new Car(orangeCar, 3,46,469, this);
     carroVermelho.start();
-    carroVerde.start();
-
+    //carroVerde.start();
+    //carroLaranja.start();
   }
 
 
