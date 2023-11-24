@@ -31,5 +31,10 @@
             <Image url="@../img/pinkCar.png" />
          </image>
       </ImageView>
+      <ImageView fx:id="blueCar" fitHeight="59.0" fitWidth="30.0" layoutX="162.0" layoutY="426.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/blueCar.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

@@ -42,7 +42,10 @@ public class Car extends Thread{
         moveGreenCar();
         break;
       case 3:
-        moveOrangeCar();
+        movePinkCar();
+        break;
+      case 4:
+        moveBlueCar();
         break;
     }
   }
@@ -52,7 +55,7 @@ public class Car extends Thread{
     while(img.getLayoutY()<lim){
       Platform.runLater(() -> img.setLayoutY(img.getLayoutY()+2));
       try {
-        sleep(20);
+        sleep(14);
       } catch (InterruptedException e) {
         throw new RuntimeException(e);
       }
@@ -63,7 +66,7 @@ public class Car extends Thread{
     while(img.getLayoutY()>lim){
       Platform.runLater(() -> img.setLayoutY(img.getLayoutY()-2));
       try {
-        sleep(20);
+        sleep(14);
       } catch (InterruptedException e) {
         throw new RuntimeException(e);
       }
@@ -74,7 +77,7 @@ public class Car extends Thread{
     while(img.getLayoutX()<lim){
       Platform.runLater(() -> img.setLayoutX(img.getLayoutX()+2));
       try {
-        sleep(20);
+        sleep(14);
       } catch (InterruptedException e) {
         throw new RuntimeException(e);
       }
@@ -85,7 +88,7 @@ public class Car extends Thread{
     while(img.getLayoutX()>lim){
       Platform.runLater(() -> img.setLayoutX(img.getLayoutX()-2));
       try {
-        sleep(20);
+        sleep(14);
       } catch (InterruptedException e) {
         throw new RuntimeException(e);
       }
@@ -148,7 +151,7 @@ public class Car extends Thread{
       Semaforo.f4f5.release();
       Semaforo.vermelho_amarelo_f.release();
       Semaforo.vermelho_marrom_f.release();
-      move_right(752);
+      move_right(770);
       move_up(504);
       Semaforo.c6d6.acquire();
       move_up(419);
@@ -165,21 +168,188 @@ public class Car extends Thread{
 
   private void moveGreenCar(){
     try {
-      move_down(430);
-      MainController.semaforo2.acquire();
-      move_down(455);
-      move_right(730);
-      MainController.semaforo1.acquire();
-      MainController.semaforo2.release();
-      move_right(759);
-      move_down(748);
-      move_left(14);
+      move_down(419);
+      Semaforo.verde_laranja.acquire();
+      Semaforo.d3d4.acquire();
+      move_down(460);
+      move_right(365);
+      Semaforo.verde_amarelo.release();
+      move_right(435);
+      Semaforo.cd4.acquire();
+      move_right(524);
+      Semaforo.d3d4.release();
+      Semaforo.cd4.release();
+      move_right(592);
+      Semaforo.cd5.acquire();
+      Semaforo.d5d6.acquire();
+      move_right(678);
+      Semaforo.cd5.release();
+      move_right(718);
+      Semaforo.vermelho_verde.acquire();
+      move_right(768);
+      move_down(504);
+      Semaforo.d5d6.release();
+      move_down(752);
+      move_left(678);
+      Semaforo.f4f5.acquire();
+      move_left(524);
+      Semaforo.f3f4.acquire();
+      move_left(435);
+      Semaforo.f4f5.release();
+      move_left(365);
+      Semaforo.f2f3.acquire();
+      move_left(280);
+      Semaforo.f3f4.release();
+      move_left(118);
+      Semaforo.f2f3.release();
+      move_left(11);
+      move_up(504);
+      Semaforo.verde_rosa.acquire();
+      Semaforo.c1d1.acquire();
+      move_up(419);
+      Semaforo.verde_laranja.release();
+      move_up(254);
+      Semaforo.c1d1.release();
       move_up(-8);
-      move_right(313);
-      MainController.semaforo1.release();
+      move_right(120);
+      Semaforo.a2a3.acquire();
+      move_right(280);
+      Semaforo.verde_amarelo.acquire();
+      Semaforo.a3b3.acquire();
+      move_right(321);
+      move_down(36);
+      Semaforo.a2a3.release();
+      Semaforo.verde_rosa.release();
+      Semaforo.vermelho_verde.release();
+      move_down(196);
+      Semaforo.a3b3.release();
       realoCar();
+
     } catch (InterruptedException e) {}
   }
+
+  private void movePinkCar(){
+    try{
+     move_up(196);
+     Semaforo.rosa_roxo.acquire();
+     move_up(36);
+     Semaforo.rosa_marrom.acquire();
+     Semaforo.a3a4.acquire();
+     move_up(-8);
+     move_left(365);
+     Semaforo.verde_rosa.acquire();
+     Semaforo.a2a3.acquire();
+     move_left(280);
+     Semaforo.a3a4.release();
+     Semaforo.rosa_roxo.release();
+     move_left(205);
+     Semaforo.a1c1.acquire();
+     move_left(120);
+     Semaforo.a2a3.release();
+     Semaforo.rosa_azul.release();
+     Semaforo.rosa_marrom.release();
+     move_left(10);
+     move_down(254);
+     Semaforo.rosa_roxo_c.acquire();
+     Semaforo.rosa_marrom_c.acquire();
+     move_down(335);
+     Semaforo.a1c1.release();
+     move_down(419);
+     Semaforo.rosa_laranja.acquire();
+     move_down(470);
+     move_right(51);
+     Semaforo.verde_rosa.release();
+     move_right(118);
+     Semaforo.cd2.acquire();
+     move_right(208);
+     Semaforo.cd2.release();
+     Semaforo.rosa_roxo_c.release();
+     Semaforo.rosa_marrom_c.release();
+     move_right(280);
+     Semaforo.cd3.acquire();
+     Semaforo.d3d4.acquire();
+     move_right(365);
+     Semaforo.cd3.release();
+     move_right(435);
+     Semaforo.rosa_azul.acquire();
+     move_right(475);
+     move_up(419);
+     Semaforo.d3d4.release();
+     Semaforo.rosa_laranja.release();
+     move_up(390);
+     realoCar();
+
+
+    } catch (InterruptedException e){}
+  }
+
+  private void moveBlueCar(){
+    try{
+      move_up(336);
+      Semaforo.b2c2.acquire();
+      move_up(196);
+      Semaforo.a2b2.acquire();
+      move_up(109);
+      Semaforo.b2c2.release();
+      move_up(35);
+      Semaforo.vermelho_azul.acquire();
+      Semaforo.rosa_azul.acquire();
+      Semaforo.a2a3.acquire();
+      move_up(-8);
+      move_right(205);
+      Semaforo.a2b2.release();
+      move_right(280);
+      Semaforo.a3a4.acquire();
+      move_right(362);
+      Semaforo.a2a3.release();
+      move_right(435);
+      Semaforo.a4b4.acquire();
+      move_right(475);
+      move_down(35);
+      Semaforo.vermelho_azul.release();
+      Semaforo.a3a4.release();
+      move_down(196);
+      Semaforo.a4b4.release();
+      move_down(419);
+      Semaforo.cd4.acquire();
+      move_down(504);
+      Semaforo.rosa_azul.release();
+      Semaforo.cd4.release();
+      move_down(573);
+      Semaforo.e4f4.acquire();
+      move_down(710);
+      Semaforo.azul_laranja.acquire();
+      Semaforo.vermelho_azul_f.acquire();
+      Semaforo.f3f4.acquire();
+      move_down(745);
+      move_left(435);
+      Semaforo.e4f4.release();
+      move_left(365);
+      Semaforo.f2f3.acquire();
+      move_left(280);
+      Semaforo.f3f4.release();
+      move_left(208);
+      Semaforo.e2f2.acquire();
+      move_left(160);
+      move_up(710);
+      Semaforo.vermelho_azul_f.release();
+      Semaforo.azul_laranja.release();
+      Semaforo.f2f3.release();
+      move_up(659);
+      Semaforo.d2e2.acquire();
+      move_up(573);
+      Semaforo.e2f2.release();
+      move_up(504);
+      Semaforo.cd2.acquire();
+      move_up(419);
+      Semaforo.cd2.release();
+      Semaforo.d2e2.release();
+      move_up(426);
+      realoCar();
+
+    } catch (InterruptedException e){}
+  }
+
   private void moveOrangeCar(){
     try{
       move_right(286);

@@ -61,16 +61,18 @@ public class Semaforo {
   public static Semaphore vermelho_azul_f = new Semaphore(1);
   public static Semaphore vermelho_amarelo_f = new Semaphore(1);
   //carro verde
-  public static Semaphore verde_amarelo = new Semaphore(1);
+  public static Semaphore verde_amarelo = new Semaphore(0);
   public static Semaphore verde_laranja = new Semaphore(1);
   public static Semaphore verde_rosa = new Semaphore(1);
   //carro rosa
-  public static Semaphore rosa_azul = new Semaphore(1);
+  public static Semaphore rosa_azul = new Semaphore(0);
   public static Semaphore rosa_roxo = new Semaphore(1);
   public static Semaphore rosa_marrom = new Semaphore(1);
-  public static Semaphore rosa_marro_c = new Semaphore(1);
+  public static Semaphore rosa_marrom_c = new Semaphore(1);
   public static Semaphore rosa_roxo_c = new Semaphore(1);
   public static Semaphore rosa_laranja = new Semaphore(1);
+  //carro azul
+  public static Semaphore azul_laranja = new Semaphore(1);
 
 
   //cruzamentos

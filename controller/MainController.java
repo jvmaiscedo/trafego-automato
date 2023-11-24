@@ -26,9 +26,15 @@ public class MainController implements Initializable {
   @FXML
   ImageView greenCar;
   @FXML
+  ImageView pinkCar;
+  @FXML
   ImageView orangeCar;
+  @FXML
+  ImageView blueCar;
   Car carroVermelho;
   Car carroVerde;
+  Car carroRosa;
+  Car carroAzul;
   Car carroLaranja;
   Semaforo mover;
   String [] moverRedCar;
@@ -47,10 +53,13 @@ public class MainController implements Initializable {
     moverGreenCar = new String[] {"d","r","d","l","u","r"};
     limGreenCar = new double[]{455,759,748,14,-8,313};
     carroVermelho = new Car(redCar, 1, 726,-8,this);
-    carroVerde = new Car(greenCar, 2,321,33,this);
-    carroLaranja = new Car(orangeCar, 3,46,469, this);
+    carroVerde = new Car(greenCar, 2,321,196,this);
+    carroRosa = new Car(pinkCar, 3, 475, 390, this);
+    carroAzul = new Car(blueCar, 4,162,426,this);
     carroVermelho.start();
-    //carroVerde.start();
+    carroVerde.start();
+    carroRosa.start();
+    carroAzul.start();
     //carroLaranja.start();
   }
 
