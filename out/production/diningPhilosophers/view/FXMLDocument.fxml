@@ -21,7 +21,7 @@
             <Image url="@../img/greenCar.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="orangeCar" fitHeight="59.0" fitWidth="30.0" layoutX="46.0" layoutY="469.0" pickOnBounds="true" preserveRatio="true" rotate="90.0" visible="false">
+      <ImageView fx:id="orangeCar" fitHeight="59.0" fitWidth="30.0" layoutX="592.0" layoutY="469.0" pickOnBounds="true" preserveRatio="true" rotate="270.0">
          <image>
             <Image url="@../img/orangeCar.png" />
          </image>
@@ -34,6 +34,17 @@
       <ImageView fx:id="blueCar" fitHeight="59.0" fitWidth="30.0" layoutX="162.0" layoutY="426.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../img/blueCar.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="yellowCar" fitHeight="59.0" fitWidth="30.0" layoutX="321.0" layoutY="573.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/yellowCar.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="purpleCar" fitHeight="59.0" fitWidth="30.0" layoutX="519.0" layoutY="155.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
+         <image>
+            <Image url="@../img/purpleCar.png" />
          </image>
       </ImageView>
    </children>

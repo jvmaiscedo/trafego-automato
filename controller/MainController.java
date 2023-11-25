@@ -31,11 +31,17 @@ public class MainController implements Initializable {
   ImageView orangeCar;
   @FXML
   ImageView blueCar;
+  @FXML
+  ImageView yellowCar;
+  @FXML
+  ImageView purpleCar;
   Car carroVermelho;
   Car carroVerde;
   Car carroRosa;
   Car carroAzul;
+  Car carroAmarelo;
   Car carroLaranja;
+  Car carroRoxo;
   Semaforo mover;
   String [] moverRedCar;
   double [] limRedCar;
@@ -47,7 +53,7 @@ public class MainController implements Initializable {
   @Override
   public void initialize(URL url, ResourceBundle rb) {
 
-    mover = new Semaforo();
+
     moverRedCar = new String[] {"r","d","l","u"};
     limRedCar = new double[]{759,748,15,-8};
     moverGreenCar = new String[] {"d","r","d","l","u","r"};
@@ -56,10 +62,17 @@ public class MainController implements Initializable {
     carroVerde = new Car(greenCar, 2,321,196,this);
     carroRosa = new Car(pinkCar, 3, 475, 390, this);
     carroAzul = new Car(blueCar, 4,162,426,this);
+    carroAmarelo = new Car(yellowCar, 5,321,573,this);
+    carroLaranja = new Car(orangeCar, 6, 592,468, this);
+    carroRoxo = new Car(purpleCar,7,519,155,this);
     carroVermelho.start();
     carroVerde.start();
     carroRosa.start();
     carroAzul.start();
+    carroAmarelo.start();
+    carroLaranja.start();
+    carroRoxo.start();
+
     //carroLaranja.start();
   }
 
