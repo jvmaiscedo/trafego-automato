@@ -169,7 +169,8 @@ public class Car extends Thread{
       move_up(254);
       Semaforo.c6d6.release();
       move_up(-8);
-      realoCar();
+      move_right(726);
+      //realoCar();
 
     } catch (InterruptedException e) {
     }
@@ -232,7 +233,7 @@ public class Car extends Thread{
       Semaforo.vermelho_verde.release();
       move_down(196);
       Semaforo.a3b3.release();
-      realoCar();
+      //realoCar();
 
     } catch (InterruptedException e) {}
   }
@@ -285,7 +286,7 @@ public class Car extends Thread{
      Semaforo.d3d4.release();
      Semaforo.rosa_laranja.release();
      move_up(390);
-     realoCar();
+     //realoCar();
 
 
     } catch (InterruptedException e){}
@@ -353,7 +354,7 @@ public class Car extends Thread{
       Semaforo.cd2.release();
       Semaforo.d2e2.release();
       move_up(426);
-      realoCar();
+      //realoCar();
 
     } catch (InterruptedException e){}
   }
@@ -417,7 +418,7 @@ public class Car extends Thread{
       Semaforo.amarelo_laranja.release();
       move_up(573);
       Semaforo.e3f3.release();
-      realoCar();
+     // realoCar();
     } catch (InterruptedException e){}
   }
 
@@ -448,12 +449,12 @@ public class Car extends Thread{
       move_down(752);
       move_right(118);
       Semaforo.laranja_marrom.acquire();
-      Semaforo.amarelo_laranja.acquire();
       Semaforo.azul_laranja.acquire();
       Semaforo.f2f3.acquire();
       move_right(208);
       Semaforo.d1f2.release();
       move_right(280);
+      Semaforo.amarelo_laranja.acquire();
       Semaforo.f3f4.acquire();
       move_right(365);
       Semaforo.f2f3.release();
@@ -479,43 +480,43 @@ public class Car extends Thread{
       move_left(592);
       Semaforo.cd5.release();
       Semaforo.d5d6.release();
-      realoCar();
+     // realoCar();
     } catch (InterruptedException e){}
   }
   private void movePurpleCar(){
     try{
       move_right(592);
       Semaforo.b5c5.acquire();
-      move_right(620);
+      move_right(636);
       move_down(254);
       Semaforo.c5c6.acquire();
-      move_down(300);
+      move_down(303);
       move_right(678);
       Semaforo.b5c5.release();
       move_right(718);
       Semaforo.c6d6.acquire();
-      move_right(745);
+      move_right(760);
       move_down(337);
       Semaforo.c5c6.release();
       move_down(419);
       Semaforo.d5d6.acquire();
-      move_down(462);
+      move_down(464);
       move_left(718);
       Semaforo.c6d6.release();
       move_left(678);
       Semaforo.d5e5.acquire();
-      move_left(621);
+      move_left(636);
       move_down(504);
       Semaforo.d5d6.release();
-      move_down(610);
+      move_down(619);
       move_left(592);
       Semaforo.d5e5.release();
       move_left(524);
       Semaforo.e4f4.acquire();
-      move_left(480);
+      move_left(485);
       move_down(710);
       Semaforo.f3f4.acquire();
-      move_down(745);
+      move_down(756);
       move_left(435);
       Semaforo.e4f4.release();
       move_left(365);
@@ -523,15 +524,15 @@ public class Car extends Thread{
       move_left(321);
       move_up(710);
       Semaforo.f3f4.release();
-      move_up(610);
+      move_up(619);
       move_left(280);
       Semaforo.e3f3.release();
       move_left(208);
       Semaforo.d2e2.acquire();
-      move_left(160);
+      move_left(162);
       move_up(504);
       Semaforo.d1d2.acquire();
-      move_up(460);
+      move_up(469);
       move_left(118);
       Semaforo.d2e2.release();
       move_left(51);
@@ -541,12 +542,12 @@ public class Car extends Thread{
       Semaforo.d1d2.release();
       move_up(336);
       Semaforo.c1c2.acquire();
-      move_up(278);
+      move_up(298);
       move_right(51);
       Semaforo.c1d1.release();
       move_right(118);
       Semaforo.b2c2.acquire();
-      move_right(160);
+      move_right(162);
       move_up(254);
       Semaforo.c1c2.release();
       move_up(155);
@@ -570,7 +571,7 @@ public class Car extends Thread{
       move_right(524);
       Semaforo.a4b4.release();
       Semaforo.rosa_roxo.release();
-      realoCar();
+      //realoCar();
     } catch (InterruptedException e){}
   }
 
