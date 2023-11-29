@@ -10,11 +10,10 @@ import java.lang.management.ManagementFactory;
 public class Car extends Thread{
   private ImageView img;
   private int id;
+  private volatile boolean isPaused=false;
   private double posInicialX;
   private double posInicialY;
   private double anguloInicial;
-  private String[] movimentos;
-  private double[] limites;
   private MainController control;
 
   public Car(ImageView img, int id, double posInicialX, double posInicialY, MainController control){
@@ -35,25 +34,25 @@ public class Car extends Thread{
 
   private void movendo(int id){
     switch (id){
-      case 1:
+      case 0:
         moveRedCar();
         break;
-      case 2:
+      case 1:
         moveGreenCar();
         break;
-      case 3:
+      case 2:
         movePinkCar();
         break;
-      case 4:
+      case 3:
         moveBlueCar();
         break;
-      case 5:
+      case 4:
         moveYellowCar();
         break;
-      case 6:
+      case 5:
         moveOrangeCar();
         break;
-      case 7:
+      case 6:
         movePurpleCar();
         break;
     }
@@ -62,45 +61,33 @@ public class Car extends Thread{
   private void move_down(double lim){
     this.img.setRotate(180);
     while(img.getLayoutY()<lim){
-      Platform.runLater(() -> img.setLayoutY(img.getLayoutY()+2));
-      try {
-        sleep(14);
-      } catch (InterruptedException e) {
-        throw new RuntimeException(e);
-      }
+      Platform.runLater(() -> img.setLayoutY(img.getLayoutY()+1));
+      sleepTime((int)(control.getVelocidadeCar(this.id)));
+      pausando();
     }
   }
   private void move_up(double lim){
     this.img.setRotate(0);
     while(img.getLayoutY()>lim){
-      Platform.runLater(() -> img.setLayoutY(img.getLayoutY()-2));
-      try {
-        sleep(14);
-      } catch (InterruptedException e) {
-        throw new RuntimeException(e);
-      }
+      Platform.runLater(() -> img.setLayoutY(img.getLayoutY()-1));
+      sleepTime((int)(control.getVelocidadeCar(this.id)));
+      pausando();
     }
   }
   private void move_right(double lim){
     this.img.setRotate(90);
     while(img.getLayoutX()<lim){
-      Platform.runLater(() -> img.setLayoutX(img.getLayoutX()+2));
-      try {
-        sleep(14);
-      } catch (InterruptedException e) {
-        throw new RuntimeException(e);
-      }
+      Platform.runLater(() -> img.setLayoutX(img.getLayoutX()+1));
+      sleepTime((int)(control.getVelocidadeCar(this.id)));
+      pausando();
     }
   }
   private void move_left(double lim){
     this.img.setRotate(270);
     while(img.getLayoutX()>lim){
-      Platform.runLater(() -> img.setLayoutX(img.getLayoutX()-2));
-      try {
-        sleep(14);
-      } catch (InterruptedException e) {
-        throw new RuntimeException(e);
-      }
+      Platform.runLater(() -> img.setLayoutX(img.getLayoutX()-1));
+      sleepTime((int)(control.getVelocidadeCar(this.id)));
+      pausando();
     }
   }
   private void realoCar(){
@@ -110,6 +97,18 @@ public class Car extends Thread{
       this.img.setLayoutX(this.posInicialX);
       this.img.setLayoutY(this.posInicialY);}
       );
+  }
+  /* ***************************************************************
+   * Metodo: sleepTime
+   * Funcao: Faz o processo dormir.
+   * Parametros: Valor numerico do tipo inteiro.
+   * Retorno: Sem retorno.
+   *************************************************************** */
+  public void sleepTime(int time){
+    try {
+      sleep((long) time);
+    } catch (InterruptedException e) {
+    }
   }
 
   private void moveRedCar(){
@@ -245,6 +244,7 @@ public class Car extends Thread{
      move_up(36);
      Semaforo.rosa_marrom.acquire();
      Semaforo.rosa_laranja.acquire();
+     Semaforo.amarelo_rosa_especial.acquire();
      Semaforo.a3a4.acquire();
      move_up(-8);
      move_left(365);
@@ -252,6 +252,7 @@ public class Car extends Thread{
      Semaforo.a2a3.acquire();
      move_left(280);
      Semaforo.a3a4.release();
+     Semaforo.amarelo_rosa_especial.release();
      Semaforo.rosa_roxo.release();
      move_left(205);
      Semaforo.a1c1.acquire();
@@ -363,6 +364,7 @@ public class Car extends Thread{
       move_up(504);
       Semaforo.vermelho_amarelo.acquire();
       Semaforo.verde_amarelo.acquire();
+      Semaforo.amarelo_rosa_especial.acquire();
       Semaforo.cd3.acquire();
       move_up(419);
       Semaforo.cd3.release();
@@ -378,6 +380,7 @@ public class Car extends Thread{
       Semaforo.a4a5.acquire();
       move_right(522);
       Semaforo.a3a4.release();
+      Semaforo.amarelo_rosa_especial.release();
       move_right(595);
       Semaforo.a5b5.acquire();
       move_right(630);
@@ -494,12 +497,11 @@ public class Car extends Thread{
       move_right(678);
       Semaforo.b5c5.release();
       move_right(718);
+      Semaforo.d5d6.acquire();
       Semaforo.c6d6.acquire();
       move_right(760);
       move_down(337);
       Semaforo.c5c6.release();
-      move_down(419);
-      Semaforo.d5d6.acquire();
       move_down(464);
       move_left(718);
       Semaforo.c6d6.release();
@@ -554,10 +556,10 @@ public class Car extends Thread{
       move_right(208);
       Semaforo.b2c2.release();
       move_right(280);
+      Semaforo.rosa_roxo.acquire();
       Semaforo.a3b3.acquire();
       move_right(320);
       move_up(35);
-      Semaforo.rosa_roxo.acquire();
       Semaforo.a3a4.acquire();
       move_up(-8);
       move_right(362);
@@ -574,6 +576,38 @@ public class Car extends Thread{
       //realoCar();
     } catch (InterruptedException e){}
   }
+  private void pausando(){
+    while (isPaused && !Thread.interrupted()){
+      try {
+        sleep(10);
+      } catch (InterruptedException e) {
+        throw new RuntimeException(e);
+      }
+    }
+  }
+
+  /* ***************************************************************
+   * Metodo: pausar
+   * Funcao: Modifica a flag responsavel por pausar o processo para
+   *         que este seja pausado.
+   * Parametros: Sem parametro.
+   * Retorno: Sem retorno.
+   *************************************************************** */
+  public void pausar(){
+    isPaused = true;
+  }
+
+  /* ***************************************************************
+   * Metodo: retomar
+   * Funcao: Modifica a flag responsavel por pausar o processo para
+   *         que este seja retomado.
+   * Parametros: Sem parametro.
+   * Retorno: Sem retorno.
+   *************************************************************** */
+  public void retomar(){
+    isPaused = false;
+  }
+
 
 
 

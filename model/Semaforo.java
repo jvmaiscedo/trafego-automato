@@ -79,13 +79,16 @@ public class Semaforo {
   public static Semaphore laranja_marrom = new Semaphore(1);
 
 
+
+
   //cruzamentos
   public static Semaphore cd2 = new Semaphore(1);
   public static Semaphore cd3 = new Semaphore(1);
   public static Semaphore cd4 = new Semaphore(1);
   public static Semaphore cd5 = new Semaphore(1);
 
-
+//especiais
+  public static Semaphore amarelo_rosa_especial = new Semaphore(1);
   public Semaforo(){}
 
 }

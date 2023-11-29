@@ -14,6 +14,7 @@ import java.util.ResourceBundle;
 import java.util.concurrent.Semaphore;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Slider;
 import javafx.scene.image.ImageView;
 import model.Car;
 import model.Semaforo;
@@ -35,6 +36,22 @@ public class MainController implements Initializable {
   ImageView yellowCar;
   @FXML
   ImageView purpleCar;
+  @FXML
+  Slider speedRed;
+  @FXML
+  Slider speedGreen;
+  @FXML
+  Slider speedPink;
+  @FXML
+  Slider speedBlue;
+  @FXML
+  Slider speedYellow;
+  @FXML
+  Slider speedOrange;
+  @FXML
+  Slider speedPurple;
+  @FXML
+  Slider speedBrown;
   Car carroVermelho;
   Car carroVerde;
   Car carroRosa;
@@ -42,29 +59,19 @@ public class MainController implements Initializable {
   Car carroAmarelo;
   Car carroLaranja;
   Car carroRoxo;
-  Semaforo mover;
-  String [] moverRedCar;
-  double [] limRedCar;
-  String [] moverGreenCar;
-  double [] limGreenCar;
-  public static Semaphore semaforo1 = new Semaphore(0);
-  public static Semaphore semaforo2 = new Semaphore(1);
+  private Slider []velocidade;
 
   @Override
   public void initialize(URL url, ResourceBundle rb) {
 
-
-    moverRedCar = new String[] {"r","d","l","u"};
-    limRedCar = new double[]{759,748,15,-8};
-    moverGreenCar = new String[] {"d","r","d","l","u","r"};
-    limGreenCar = new double[]{455,759,748,14,-8,313};
-    carroVermelho = new Car(redCar, 1, 726,-8,this);
-    carroVerde = new Car(greenCar, 2,321,196,this);
-    carroRosa = new Car(pinkCar, 3, 475, 390, this);
-    carroAzul = new Car(blueCar, 4,162,426,this);
-    carroAmarelo = new Car(yellowCar, 5,321,573,this);
-    carroLaranja = new Car(orangeCar, 6, 592,468, this);
-    carroRoxo = new Car(purpleCar,7,519,155,this);
+    carroVermelho = new Car(redCar, 0, 726,-8,this);
+    carroVerde = new Car(greenCar, 1,321,196,this);
+    carroRosa = new Car(pinkCar, 2, 475, 390, this);
+    carroAzul = new Car(blueCar, 3,162,426,this);
+    carroAmarelo = new Car(yellowCar, 4,321,573,this);
+    carroLaranja = new Car(orangeCar, 5, 592,468, this);
+    carroRoxo = new Car(purpleCar,6,519,155,this);
+    velocidade = new Slider[]{speedRed, speedGreen, speedPink,speedBlue, speedYellow, speedOrange, speedPurple, speedBrown};
     carroVermelho.start();
     carroVerde.start();
     carroRosa.start();
@@ -72,9 +79,118 @@ public class MainController implements Initializable {
     carroAmarelo.start();
     carroLaranja.start();
     carroRoxo.start();
-
     //carroLaranja.start();
   }
+
+  public double getVelocidadeCar(int id){
+    return velocidade[id].getValue();
+  }
+  @FXML
+  public void pauseRedCar(){
+    carroVermelho.pausar();
+  }
+  @FXML
+  public void retomarRedCar(){
+    carroVermelho.retomar();
+  }
+  @FXML
+  public void showRedPath(){}
+  @FXML
+  public void pauseGreenCar() {
+    carroVerde.pausar();
+  }
+
+  @FXML
+  public void retomarGreenCar() {
+    carroVerde.retomar();
+  }
+
+  @FXML
+  public void showGreenPath() {
+  }
+
+  @FXML
+  public void pausePinkCar() {
+    carroRosa.pausar();
+  }
+
+  @FXML
+  public void retomarPinkCar() {
+    carroRosa.retomar();
+  }
+
+  @FXML
+  public void showPinkPath() {
+  }
+
+  @FXML
+  public void pauseBlueCar() {
+    carroAzul.pausar();
+  }
+
+  @FXML
+  public void retomarBlueCar() {
+    carroAzul.retomar();
+  }
+
+  @FXML
+  public void showBluePath() {
+  }
+
+  @FXML
+  public void pauseYellowCar() {
+    carroAmarelo.pausar();
+  }
+
+  @FXML
+  public void retomarYellowCar() {
+    carroAmarelo.retomar();
+  }
+
+  @FXML
+  public void showYellowPath() {
+  }
+
+  @FXML
+  public void pauseOrangeCar() {
+    carroLaranja.pausar();
+  }
+
+  @FXML
+  public void retomarOrangeCar() {
+    carroLaranja.retomar();
+  }
+
+  @FXML
+  public void showOrangePath() {
+  }
+
+  @FXML
+  public void pausePurpleCar() {
+    carroRoxo.pausar();
+  }
+
+  @FXML
+  public void retomarPurpleCar() {
+    carroRoxo.retomar();
+  }
+
+  @FXML
+  public void showPurplePath() {
+  }
+
+  @FXML
+  public void pauseBrownCar() {
+  }
+
+  @FXML
+  public void retomarBrownCar() {
+  }
+
+  @FXML
+  public void showBrownPath() {
+  }
+
 
 
 

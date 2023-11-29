@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Slider?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainController">
    <children>
@@ -47,5 +50,274 @@
             <Image url="@../img/purpleCar.png" />
          </image>
       </ImageView>
+      <ImageView fitHeight="800.0" fitWidth="200.0" layoutX="800.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/controles.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="846.0" layoutY="149.0" mnemonicParsing="false" onAction="#pauseRedCar" prefHeight="22.0" prefWidth="24.0">
+         <graphic>
+            <ImageView fitHeight="20.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/pause.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font size="1.0" />
+         </font>
+      </Button>
+      <Button layoutX="876.0" layoutY="149.0" mnemonicParsing="false" onAction="#retomarRedCar" prefHeight="22.0" prefWidth="24.0">
+         <font>
+            <Font size="1.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="22.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/undo.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button layoutX="846.0" layoutY="229.0" mnemonicParsing="false" onAction="#pauseGreenCar" prefHeight="22.0" prefWidth="24.0">
+         <graphic>
+            <ImageView fitHeight="20.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/pause.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font size="1.0" />
+         </font>
+      </Button>
+      <Slider fx:id="speedRed" layoutX="846.0" layoutY="184.0" max="10.0" min="1.0" prefHeight="16.0" prefWidth="92.0" rotate="180.0" value="5.0" />
+      <Button layoutX="907.0" layoutY="150.0" mnemonicParsing="false" onAction="#showRedPath" prefHeight="22.0" prefWidth="24.0">
+         <graphic>
+            <ImageView fitHeight="22.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" />
+         </graphic>
+         <font>
+            <Font size="1.0" />
+         </font>
+      </Button>
+      <Button layoutX="876.0" layoutY="228.0" mnemonicParsing="false" onAction="#retomarGreenCar" prefHeight="22.0" prefWidth="24.0">
+         <font>
+            <Font size="1.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="22.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/undo.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button layoutX="907.0" layoutY="228.0" mnemonicParsing="false" onAction="#showGreenPath" prefHeight="22.0" prefWidth="24.0">
+         <graphic>
+            <ImageView fitHeight="22.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" />
+         </graphic>
+         <font>
+            <Font size="1.0" />
+         </font>
+      </Button>
+      <Slider fx:id="speedGreen" layoutX="846.0" layoutY="261.0" max="10.0" min="1.0" prefHeight="16.0" prefWidth="92.0" rotate="180.0" value="5.0" />
+      <Button layoutX="846.0" layoutY="312.0" mnemonicParsing="false" onAction="#pausePinkCar" prefHeight="22.0" prefWidth="24.0">
+         <graphic>
+            <ImageView fitHeight="20.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/pause.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font size="1.0" />
+         </font>
+      </Button>
+      <Button layoutX="876.0" layoutY="311.0" mnemonicParsing="false" onAction="#retomarPinkCar" prefHeight="22.0" prefWidth="24.0">
+         <font>
+            <Font size="1.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="22.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/undo.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button layoutX="907.0" layoutY="311.0" mnemonicParsing="false" onAction="#showPinkPath" prefHeight="22.0" prefWidth="24.0">
+         <graphic>
+            <ImageView fitHeight="22.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" />
+         </graphic>
+         <font>
+            <Font size="1.0" />
+         </font>
+      </Button>
+      <Slider fx:id="speedPink" layoutX="846.0" layoutY="343.0" max="10.0" min="1.0" prefHeight="16.0" prefWidth="92.0" rotate="180.0" value="5.0" />
+      <Button layoutX="846.0" layoutY="393.0" mnemonicParsing="false" onAction="#pauseBlueCar" prefHeight="22.0" prefWidth="24.0">
+         <graphic>
+            <ImageView fitHeight="20.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/pause.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font size="1.0" />
+         </font>
+      </Button>
+      <Button layoutX="876.0" layoutY="392.0" mnemonicParsing="false" onAction="#retomarBlueCar" prefHeight="22.0" prefWidth="24.0">
+         <font>
+            <Font size="1.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="22.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/undo.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button layoutX="907.0" layoutY="392.0" mnemonicParsing="false" onAction="#showBluePath" prefHeight="22.0" prefWidth="24.0">
+         <graphic>
+            <ImageView fitHeight="22.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" />
+         </graphic>
+         <font>
+            <Font size="1.0" />
+         </font>
+      </Button>
+      <Slider fx:id="speedBlue" layoutX="846.0" layoutY="426.0" max="10.0" min="1.0" prefHeight="16.0" prefWidth="92.0" rotate="180.0" value="5.0" />
+      <Button layoutX="846.0" layoutY="473.0" mnemonicParsing="false" onAction="#pauseYellowCar" prefHeight="22.0" prefWidth="24.0">
+         <graphic>
+            <ImageView fitHeight="20.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/pause.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font size="1.0" />
+         </font>
+      </Button>
+      <Button layoutX="876.0" layoutY="472.0" mnemonicParsing="false" onAction="#retomarYellowCar" prefHeight="22.0" prefWidth="24.0">
+         <font>
+            <Font size="1.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="22.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/undo.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button layoutX="907.0" layoutY="472.0" mnemonicParsing="false" onAction="#showYellowPath" prefHeight="22.0" prefWidth="24.0">
+         <graphic>
+            <ImageView fitHeight="22.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" />
+         </graphic>
+         <font>
+            <Font size="1.0" />
+         </font>
+      </Button>
+      <Slider fx:id="speedYellow" layoutX="846.0" layoutY="506.0" max="10.0" min="1.0" prefHeight="16.0" prefWidth="92.0" rotate="180.0" value="5.0" />
+      <Button layoutX="846.0" layoutY="555.0" mnemonicParsing="false" onAction="#pauseOrangeCar" prefHeight="22.0" prefWidth="24.0">
+         <graphic>
+            <ImageView fitHeight="20.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/pause.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font size="1.0" />
+         </font>
+      </Button>
+      <Button layoutX="876.0" layoutY="554.0" mnemonicParsing="false" onAction="#retomarOrangeCar" prefHeight="22.0" prefWidth="24.0">
+         <font>
+            <Font size="1.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="22.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/undo.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button layoutX="907.0" layoutY="554.0" mnemonicParsing="false" onAction="#showOrangePath" prefHeight="22.0" prefWidth="24.0">
+         <graphic>
+            <ImageView fitHeight="22.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" />
+         </graphic>
+         <font>
+            <Font size="1.0" />
+         </font>
+      </Button>
+      <Slider fx:id="speedOrange" layoutX="846.0" layoutY="587.0" max="10.0" min="1.0" prefHeight="16.0" prefWidth="92.0" rotate="180.0" value="5.0" />
+      <Button layoutX="846.0" layoutY="636.0" mnemonicParsing="false" onAction="#pausePurpleCar" prefHeight="22.0" prefWidth="24.0">
+         <graphic>
+            <ImageView fitHeight="20.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/pause.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font size="1.0" />
+         </font>
+      </Button>
+      <Button layoutX="876.0" layoutY="635.0" mnemonicParsing="false" onAction="#retomarPurpleCar" prefHeight="22.0" prefWidth="24.0">
+         <font>
+            <Font size="1.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="22.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/undo.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button layoutX="907.0" layoutY="635.0" mnemonicParsing="false" onAction="#showPurplePath" prefHeight="22.0" prefWidth="24.0">
+         <graphic>
+            <ImageView fitHeight="22.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" />
+         </graphic>
+         <font>
+            <Font size="1.0" />
+         </font>
+      </Button>
+      <Slider fx:id="speedPurple" layoutX="846.0" layoutY="670.0" max="10.0" min="1.0" prefHeight="16.0" prefWidth="92.0" rotate="180.0" value="5.0" />
+      <Button layoutX="846.0" layoutY="715.0" mnemonicParsing="false" onAction="#pauseBrownCar" prefHeight="22.0" prefWidth="24.0">
+         <graphic>
+            <ImageView fitHeight="20.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/pause.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font size="1.0" />
+         </font>
+      </Button>
+      <Button layoutX="876.0" layoutY="714.0" mnemonicParsing="false" onAction="#retomarBrownCar" prefHeight="22.0" prefWidth="24.0">
+         <font>
+            <Font size="1.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="22.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/undo.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button layoutX="907.0" layoutY="714.0" mnemonicParsing="false" onAction="#showBrownPath" prefHeight="22.0" prefWidth="24.0">
+         <graphic>
+            <ImageView fitHeight="22.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" />
+         </graphic>
+         <font>
+            <Font size="1.0" />
+         </font>
+      </Button>
+      <Slider fx:id="speedBrown" layoutX="846.0" layoutY="746.0" max="10.0" min="1.0" prefHeight="16.0" prefWidth="92.0" rotate="180.0" value="5.0" />
    </children>
 </AnchorPane>
