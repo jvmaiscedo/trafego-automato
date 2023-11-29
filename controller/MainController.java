@@ -37,6 +37,8 @@ public class MainController implements Initializable {
   @FXML
   ImageView purpleCar;
   @FXML
+  ImageView brownCar;
+  @FXML
   Slider speedRed;
   @FXML
   Slider speedGreen;
@@ -52,6 +54,7 @@ public class MainController implements Initializable {
   Slider speedPurple;
   @FXML
   Slider speedBrown;
+
   Car carroVermelho;
   Car carroVerde;
   Car carroRosa;
@@ -59,7 +62,10 @@ public class MainController implements Initializable {
   Car carroAmarelo;
   Car carroLaranja;
   Car carroRoxo;
+  Car carroMarrom;
   private Slider []velocidade;
+  public static final int N = 53;
+  public static Semaphore[] rc = new Semaphore[N];
 
   @Override
   public void initialize(URL url, ResourceBundle rb) {
@@ -71,6 +77,7 @@ public class MainController implements Initializable {
     carroAmarelo = new Car(yellowCar, 4,321,573,this);
     carroLaranja = new Car(orangeCar, 5, 592,468, this);
     carroRoxo = new Car(purpleCar,6,519,155,this);
+    carroMarrom = new Car(brownCar, 7,160,710, this);
     velocidade = new Slider[]{speedRed, speedGreen, speedPink,speedBlue, speedYellow, speedOrange, speedPurple, speedBrown};
     carroVermelho.start();
     carroVerde.start();
@@ -79,7 +86,14 @@ public class MainController implements Initializable {
     carroAmarelo.start();
     carroLaranja.start();
     carroRoxo.start();
+    carroMarrom.start();
     //carroLaranja.start();
+  }
+  public void iniciarSemaforos(){
+    for(int i=0; i<N;i++){
+      rc[i]=new Semaphore(1);
+
+    }
   }
 
   public double getVelocidadeCar(int id){
@@ -181,10 +195,12 @@ public class MainController implements Initializable {
 
   @FXML
   public void pauseBrownCar() {
+    carroMarrom.pausar();
   }
 
   @FXML
   public void retomarBrownCar() {
+    carroMarrom.retomar();
   }
 
   @FXML
