@@ -3,9 +3,6 @@ package model;
 import controller.MainController;
 import javafx.application.Platform;
 import javafx.scene.image.ImageView;
-import sun.applet.Main;
-import model.Semaforo;
-import java.lang.management.ManagementFactory;
 
 public class Car extends Thread{
   private ImageView img;
@@ -16,18 +13,19 @@ public class Car extends Thread{
   private double anguloInicial;
   private MainController control;
 
-  public Car(ImageView img, int id, double posInicialX, double posInicialY, MainController control){
+  public Car(ImageView img, int id, double posInicialX, double posInicialY, double anguloInicial, MainController control){
     this.img = img;
     this.id = id;
     this.control = control;
     this.posInicialX = posInicialX;
     this.posInicialY = posInicialY;
-    this.anguloInicial = img.getRotate();
+    this.anguloInicial = anguloInicial;
   }
 
   @Override
   public void run() {
-    while (true){
+    while (!Thread.interrupted()){
+      posicionar();
       movendo(this.id);
     }
   }
@@ -61,9 +59,22 @@ public class Car extends Thread{
     }
   }
 
+
+  public double getPosInicialX() {
+    return posInicialX;
+  }
+
+  public double getPosInicialY() {
+    return posInicialY;
+  }
+
+  public double getAnguloInicial() {
+    return anguloInicial;
+  }
+
   private void move_down(double lim){
     Platform.runLater(() ->this.img.setRotate(180));
-    while(img.getLayoutY()<lim){
+    while(img.getLayoutY()<lim && !Thread.interrupted()){
       Platform.runLater(() -> img.setLayoutY(img.getLayoutY()+1));
       sleepTime((int)(control.getVelocidadeCar(this.id)));
       pausando();
@@ -71,7 +82,7 @@ public class Car extends Thread{
   }
   private void move_up(double lim){
     Platform.runLater(() ->this.img.setRotate(0));
-    while(img.getLayoutY()>lim){
+    while(img.getLayoutY()>lim && !Thread.interrupted()){
       Platform.runLater(() -> img.setLayoutY(img.getLayoutY()-1));
       sleepTime((int)(control.getVelocidadeCar(this.id)));
       pausando();
@@ -79,7 +90,7 @@ public class Car extends Thread{
   }
   private void move_right(double lim){
     Platform.runLater(() ->this.img.setRotate(90));
-    while(img.getLayoutX()<lim){
+    while(img.getLayoutX()<lim && !Thread.interrupted()){
       Platform.runLater(() -> img.setLayoutX(img.getLayoutX()+1));
       sleepTime((int)(control.getVelocidadeCar(this.id)));
       pausando();
@@ -87,14 +98,13 @@ public class Car extends Thread{
   }
   private void move_left(double lim){
     Platform.runLater(() ->this.img.setRotate(270));
-    while(img.getLayoutX()>lim){
+    while(img.getLayoutX()>lim && !Thread.interrupted()){
       Platform.runLater(() -> img.setLayoutX(img.getLayoutX()-1));
       sleepTime((int)(control.getVelocidadeCar(this.id)));
       pausando();
     }
   }
-  private void realoCar(){
-
+  public void posicionar(){
     Platform.runLater(()->{
       this.img.setRotate(anguloInicial);
       this.img.setLayoutX(this.posInicialX);
@@ -158,7 +168,7 @@ public class Car extends Thread{
       move_down(504);
       MainController.rc[35].release();
       //Semaforo.c1d1.release();
-      move_down(756);
+      move_down(760);
       move_right(118);
       MainController.rc[4].acquire();
       //Semaforo.vermelho_marrom_f.acquire();
@@ -205,6 +215,7 @@ public class Car extends Thread{
       move_up(-8);
       move_right(726);
       //realoCar();
+      System.out.println("SOU A ULTIMA LINHA DO RED CAR");
 
     } catch (InterruptedException e) {
     }
@@ -967,12 +978,9 @@ public class Car extends Thread{
     while (isPaused && !Thread.interrupted()){
       try {
         sleep(10);
-      } catch (InterruptedException e) {
-        throw new RuntimeException(e);
-      }
+      } catch (InterruptedException e) {}
     }
   }
-
   /* ***************************************************************
    * Metodo: pausar
    * Funcao: Modifica a flag responsavel por pausar o processo para
