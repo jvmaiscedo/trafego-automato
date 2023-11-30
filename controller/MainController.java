@@ -78,6 +78,7 @@ public class MainController implements Initializable {
     carroLaranja = new Car(orangeCar, 5, 592,468, this);
     carroRoxo = new Car(purpleCar,6,519,155,this);
     carroMarrom = new Car(brownCar, 7,160,710, this);
+    iniciarSemaforos();
     velocidade = new Slider[]{speedRed, speedGreen, speedPink,speedBlue, speedYellow, speedOrange, speedPurple, speedBrown};
     carroVermelho.start();
     carroVerde.start();
@@ -87,11 +88,17 @@ public class MainController implements Initializable {
     carroLaranja.start();
     carroRoxo.start();
     carroMarrom.start();
-    //carroLaranja.start();
+
   }
   public void iniciarSemaforos(){
     for(int i=0; i<N;i++){
-      rc[i]=new Semaphore(1);
+      if(i==7||i==8||i==10||i==44){
+        rc[i]=new Semaphore(0);
+      }
+      else{
+        rc[i]=new Semaphore(1);
+      }
+
 
     }
   }
