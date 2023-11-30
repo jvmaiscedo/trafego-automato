@@ -25,7 +25,6 @@ public class Car extends Thread{
   @Override
   public void run() {
     while (!Thread.interrupted()){
-      posicionar();
       movendo(this.id);
     }
   }

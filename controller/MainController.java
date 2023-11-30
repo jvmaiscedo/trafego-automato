@@ -71,15 +71,6 @@ public class MainController implements Initializable {
   Slider speedPurple;
   @FXML
   Slider speedBrown;
-
-  Car carroVermelho;
-  Car carroVerde;
-  Car carroRosa;
-  Car carroAzul;
-  Car carroAmarelo;
-  Car carroLaranja;
-  Car carroRoxo;
-  Car carroMarrom;
   private Slider [] velocidade;
   private ImageView [] carImage;
   private ImageView [] percursos;
@@ -88,6 +79,8 @@ public class MainController implements Initializable {
   public static final int N = 53;
   public static Semaphore[] rc = new Semaphore[N];
   public boolean [] booleansIsVisible = new boolean[8];
+  private volatile boolean reinicializando = false;
+
 
 
   @Override
@@ -103,7 +96,6 @@ public class MainController implements Initializable {
     percursos = new ImageView[] {redPath, greenPath, pinkPath, bluePath, yellowPath, orangePath, purplePath, brownPath};
     velocidade = new Slider[]{speedRed, speedGreen, speedPink,speedBlue, speedYellow, speedOrange, speedPurple, speedBrown};
     carImage = new ImageView[]{redCar, greenCar, pinkCar, blueCar, yellowCar, orangeCar, purpleCar, brownCar};
-
     /*
     //carroVermelho = new Car(redCar, 0, 726,-8,this);
     //carroVerde = new Car(greenCar, 1,321,196,this);
@@ -154,6 +146,7 @@ public class MainController implements Initializable {
   @FXML
   public void reset(){
     interromperThreads();
+    iniciarSemaforos();
     iniciar();
   }
 
@@ -170,6 +163,7 @@ public class MainController implements Initializable {
     for (int i = 0; i <8; i++) {//interrompendo as threads e setando as variaveis booleanas.
       carros[i].interrupt();
       booleansIsVisible[i] = false;
+      carros[i].posicionar();
     }
   }
 
@@ -188,7 +182,6 @@ public class MainController implements Initializable {
     for(int i=0; i<8; i++ ){
       carros[i] = new Car(carImage[i], i, posicaoInicial[i].getCoordenadaX(), posicaoInicial[i].getCoordenadaY(), posicaoInicial[i].getAngulo(), this);
       carros[i].posicionar();
-      System.out.println("CARRO "+i+"\nX: "+carros[i].getPosInicialX()+"\nY: "+carros[i].getPosInicialY()+"\nANGULO: "+carros[i].getAnguloInicial());
     }
   }
 
