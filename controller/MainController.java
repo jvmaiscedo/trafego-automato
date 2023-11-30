@@ -38,6 +38,23 @@ public class MainController implements Initializable {
   ImageView purpleCar;
   @FXML
   ImageView brownCar;
+  //percursos
+  @FXML
+  ImageView redPath;
+  @FXML
+  ImageView greenPath;
+  @FXML
+  ImageView pinkPath;
+  @FXML
+  ImageView bluePath;
+  @FXML
+  ImageView yellowPath;
+  @FXML
+  ImageView orangePath;
+  @FXML
+  ImageView purplePath;
+  @FXML
+  ImageView brownPath;
   @FXML
   Slider speedRed;
   @FXML
@@ -63,9 +80,22 @@ public class MainController implements Initializable {
   Car carroLaranja;
   Car carroRoxo;
   Car carroMarrom;
-  private Slider []velocidade;
+  private Slider [] velocidade;
+  private ImageView [] carros;
+  private ImageView [] percursos;
   public static final int N = 53;
   public static Semaphore[] rc = new Semaphore[N];
+  public boolean [] booleansIsVisible = new boolean[8];
+  public boolean redPathIsVisible;
+  public boolean greenPathIsVisible;
+  public boolean pinkPathIsVisible;
+  public boolean bluePathIsVisible;
+  public boolean yellowPathIsVisible;
+  public boolean orangePathIsVisible;
+  public boolean purplePathIsVisible;
+  public boolean brownPathIsVisible;
+
+
 
   @Override
   public void initialize(URL url, ResourceBundle rb) {
@@ -79,7 +109,12 @@ public class MainController implements Initializable {
     carroRoxo = new Car(purpleCar,6,519,155,this);
     carroMarrom = new Car(brownCar, 7,160,710, this);
     iniciarSemaforos();
+    for(int i = 0; i<7;i++){
+      booleansIsVisible[i] = false;
+    }
+    percursos = new ImageView[] {redPath, greenPath, pinkPath, bluePath, yellowPath, orangePath, purplePath, brownPath};
     velocidade = new Slider[]{speedRed, speedGreen, speedPink,speedBlue, speedYellow, speedOrange, speedPurple, speedBrown};
+
     carroVermelho.start();
     carroVerde.start();
     carroRosa.start();
@@ -88,6 +123,11 @@ public class MainController implements Initializable {
     carroLaranja.start();
     carroRoxo.start();
     carroMarrom.start();
+
+  }
+
+  @FXML
+  public void reset(){
 
   }
   public void iniciarSemaforos(){
@@ -115,7 +155,10 @@ public class MainController implements Initializable {
     carroVermelho.retomar();
   }
   @FXML
-  public void showRedPath(){}
+  public void showRedPath(){
+    booleansIsVisible[0] = !booleansIsVisible[0];
+    percursos[0].setVisible(booleansIsVisible[0]);
+  }
   @FXML
   public void pauseGreenCar() {
     carroVerde.pausar();
@@ -128,6 +171,8 @@ public class MainController implements Initializable {
 
   @FXML
   public void showGreenPath() {
+    booleansIsVisible[1] = !booleansIsVisible[1];
+    percursos[1].setVisible(booleansIsVisible[1]);
   }
 
   @FXML
@@ -142,6 +187,8 @@ public class MainController implements Initializable {
 
   @FXML
   public void showPinkPath() {
+    booleansIsVisible[2] = !booleansIsVisible[2];
+    percursos[2].setVisible(booleansIsVisible[2]);
   }
 
   @FXML
@@ -156,6 +203,8 @@ public class MainController implements Initializable {
 
   @FXML
   public void showBluePath() {
+    booleansIsVisible[3] = !booleansIsVisible[3];
+    percursos[3].setVisible(booleansIsVisible[3]);
   }
 
   @FXML
@@ -170,6 +219,8 @@ public class MainController implements Initializable {
 
   @FXML
   public void showYellowPath() {
+    booleansIsVisible[4] = !booleansIsVisible[4];
+    percursos[4].setVisible(booleansIsVisible[4]);
   }
 
   @FXML
@@ -184,6 +235,8 @@ public class MainController implements Initializable {
 
   @FXML
   public void showOrangePath() {
+    booleansIsVisible[5] = !booleansIsVisible[5];
+    percursos[5].setVisible(booleansIsVisible[5]);
   }
 
   @FXML
@@ -198,6 +251,8 @@ public class MainController implements Initializable {
 
   @FXML
   public void showPurplePath() {
+    booleansIsVisible[6] = !booleansIsVisible[6];
+    percursos[6].setVisible(booleansIsVisible[6]);
   }
 
   @FXML
@@ -212,6 +267,8 @@ public class MainController implements Initializable {
 
   @FXML
   public void showBrownPath() {
+    booleansIsVisible[7] = !booleansIsVisible[7];
+    percursos[7].setVisible(booleansIsVisible[7]);
   }
 
 
