@@ -9,9 +9,11 @@
 *************************************************************** */
 
 package controller;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.concurrent.Semaphore;
+
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Slider;
@@ -71,30 +73,29 @@ public class MainController implements Initializable {
   Slider speedPurple;
   @FXML
   Slider speedBrown;
-  private Slider [] velocidade;
-  private ImageView [] carImage;
-  private ImageView [] percursos;
-  private Positions [] posicaoInicial = new Positions[8];
-  private Car [] carros = new Car [8];
+  private Slider[] velocidade;
+  private ImageView[] carImage;
+  private ImageView[] percursos;
+  private Positions[] posicaoInicial = new Positions[8];
+  private Car[] carros = new Car[8];
   public static final int N = 53;
   public static Semaphore[] rc = new Semaphore[N];
-  public boolean [] booleansIsVisible = new boolean[8];
+  public boolean[] booleansIsVisible = new boolean[8];
   private volatile boolean reinicializando = false;
-
 
 
   @Override
   public void initialize(URL url, ResourceBundle rb) {
-    posicaoInicial[0] = new Positions(726,-8,270);
-    posicaoInicial[1] = new Positions(321,196,180);
+    posicaoInicial[0] = new Positions(726, -8, 270);
+    posicaoInicial[1] = new Positions(321, 196, 180);
     posicaoInicial[2] = new Positions(475, 390, 0);
-    posicaoInicial[3] = new Positions(162, 426,0);
-    posicaoInicial[4] = new Positions(321, 573,0);
-    posicaoInicial[5] = new Positions(592,468,270);
-    posicaoInicial[6] = new Positions(519,155,90);
-    posicaoInicial[7] = new Positions(160,710,0);
-    percursos = new ImageView[] {redPath, greenPath, pinkPath, bluePath, yellowPath, orangePath, purplePath, brownPath};
-    velocidade = new Slider[]{speedRed, speedGreen, speedPink,speedBlue, speedYellow, speedOrange, speedPurple, speedBrown};
+    posicaoInicial[3] = new Positions(162, 426, 0);
+    posicaoInicial[4] = new Positions(321, 573, 0);
+    posicaoInicial[5] = new Positions(592, 468, 270);
+    posicaoInicial[6] = new Positions(519, 155, 90);
+    posicaoInicial[7] = new Positions(160, 710, 0);
+    percursos = new ImageView[]{redPath, greenPath, pinkPath, bluePath, yellowPath, orangePath, purplePath, brownPath};
+    velocidade = new Slider[]{speedRed, speedGreen, speedPink, speedBlue, speedYellow, speedOrange, speedPurple, speedBrown};
     carImage = new ImageView[]{redCar, greenCar, pinkCar, blueCar, yellowCar, orangeCar, purpleCar, brownCar};
     /*
     //carroVermelho = new Car(redCar, 0, 726,-8,this);
@@ -125,14 +126,15 @@ public class MainController implements Initializable {
 
 
   }
-  public void iniciar(){
-    for(int i=0; i<8;i++){
+
+  public void iniciar() {
+    for (int i = 0; i < 8; i++) {
       velocidade[i].setValue(5);
       percursos[i].setVisible(booleansIsVisible[i]);
     }
     iniciarSemaforos();
     iniciarCarros();
-    for(int j = 0; j<8;j++){
+    for (int j = 0; j < 8; j++) {
       carros[j].start();
     }
   }
@@ -144,7 +146,7 @@ public class MainController implements Initializable {
    * Retorno: Sem retorno.
    *************************************************************** */
   @FXML
-  public void reset(){
+  public void reset() {
     interromperThreads();
     iniciarSemaforos();
     iniciar();
@@ -157,50 +159,53 @@ public class MainController implements Initializable {
    * Retorno: Sem retorno.
    *************************************************************** */
   public void interromperThreads() {
-    for (int j=0; j<8;j++){//pausando as threads para interromper sem haver conflito.
+    for (int j = 0; j < 8; j++) {//pausando as threads para interromper sem haver conflito.
       carros[j].pausar();
     }
-    for (int i = 0; i <8; i++) {//interrompendo as threads e setando as variaveis booleanas.
+    for (int i = 0; i < 8; i++) {//interrompendo as threads e setando as variaveis booleanas.
       carros[i].interrupt();
       booleansIsVisible[i] = false;
       carros[i].posicionar();
     }
   }
 
-  public void iniciarSemaforos(){
-    for(int i=0; i<N;i++){
-      if(i==7||i==8||i==10||i==44){
-        rc[i]=new Semaphore(0);
-      }
-      else{
-        rc[i]=new Semaphore(1);
+  public void iniciarSemaforos() {
+    for (int i = 0; i < N; i++) {
+      if (i == 7 || i == 8 || i == 10 || i == 44) {
+        rc[i] = new Semaphore(0);
+      } else {
+        rc[i] = new Semaphore(1);
       }
     }
   }
 
-  public void iniciarCarros(){
-    for(int i=0; i<8; i++ ){
+  public void iniciarCarros() {
+    for (int i = 0; i < 8; i++) {
       carros[i] = new Car(carImage[i], i, posicaoInicial[i].getCoordenadaX(), posicaoInicial[i].getCoordenadaY(), posicaoInicial[i].getAngulo(), this);
       carros[i].posicionar();
     }
   }
 
-  public double getVelocidadeCar(int id){
+  public double getVelocidadeCar(int id) {
     return velocidade[id].getValue();
   }
+
   @FXML
-  public void pauseRedCar(){
+  public void pauseRedCar() {
     carros[0].pausar();
   }
+
   @FXML
-  public void retomarRedCar(){
+  public void retomarRedCar() {
     carros[0].retomar();
   }
+
   @FXML
-  public void showRedPath(){
+  public void showRedPath() {
     booleansIsVisible[0] = !booleansIsVisible[0];
     percursos[0].setVisible(booleansIsVisible[0]);
   }
+
   @FXML
   public void pauseGreenCar() {
     carros[1].pausar();
@@ -312,8 +317,6 @@ public class MainController implements Initializable {
     booleansIsVisible[7] = !booleansIsVisible[7];
     percursos[7].setVisible(booleansIsVisible[7]);
   }
-
-
 
 
 }
