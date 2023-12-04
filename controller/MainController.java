@@ -1,13 +1,12 @@
 /* ***************************************************************
 * Autor............: Joao Victor Gomes Macedo
 * Matricula........: 202210166
-* Inicio...........: 20/10/2023
-* Ultima alteracao.: 27/10/2023
+* Inicio...........: 22/11/2023
+* Ultima alteracao.: 03/12/2023
 * Nome.............: MainController
 * Funcao...........: Manipula os objetos da interface gráfica 
 		                 e das classes modelo.
 *************************************************************** */
-
 package controller;
 
 import java.net.URL;
@@ -21,9 +20,8 @@ import javafx.scene.image.ImageView;
 import model.Car;
 import model.Positions;
 
-
 public class MainController implements Initializable {
-  //Elementos de imagem
+  //Imagens dos carros
   @FXML
   ImageView redCar;
   @FXML
@@ -40,7 +38,7 @@ public class MainController implements Initializable {
   ImageView purpleCar;
   @FXML
   ImageView brownCar;
-  //percursos
+  //Imagens dos percursos
   @FXML
   ImageView redPath;
   @FXML
@@ -57,6 +55,7 @@ public class MainController implements Initializable {
   ImageView purplePath;
   @FXML
   ImageView brownPath;
+  //Elementos de controle
   @FXML
   Slider speedRed;
   @FXML
@@ -73,19 +72,19 @@ public class MainController implements Initializable {
   Slider speedPurple;
   @FXML
   Slider speedBrown;
-  private Slider[] velocidade;
-  private ImageView[] carImage;
-  private ImageView[] percursos;
-  private Positions[] posicaoInicial = new Positions[8];
-  private Car[] carros = new Car[8];
-  public static final int N = 53;
-  public static Semaphore[] rc = new Semaphore[N];
-  public boolean[] booleansIsVisible = new boolean[8];
-  private volatile boolean reinicializando = false;
-
+  private Slider[] velocidade;//Vetor para organizar os sliders e acessa-los diretamente via id.
+  private ImageView[] carImage;//Vetor para organizar as imagens e acessa-las diretamente via id.
+  private ImageView[] percursos;//Vetor para organizar as imagens e acessa-las diretamente via id.
+  private final Positions[] posicaoInicial = new Positions[8];//Vetor para guardar os objetos contendo a posicao inicial de cada carro
+  private Car[] carros = new Car[8];//Vetor para guardar os carros e tornar mais pratico a instancia e manipulacao de objetos Car
+  private static final int N = 53;//Variavel estatica para o numero de semaforos total
+  private static final int M = 8;//Variavel estatica para o numero de carros
+  public static Semaphore[] rc = new Semaphore[N];//Vetor para armazenar os semaforos e facilitar a manipulacao destes
+  public boolean[] booleansIsVisible = new boolean[8];//Vetor para armazenar as variaveis que controlam a visibilidade dos percursos
 
   @Override
   public void initialize(URL url, ResourceBundle rb) {
+    //instanciando as posicoes iniciais de cada carro
     posicaoInicial[0] = new Positions(726, -8, 270);
     posicaoInicial[1] = new Positions(321, 196, 180);
     posicaoInicial[2] = new Positions(475, 390, 0);
@@ -94,48 +93,28 @@ public class MainController implements Initializable {
     posicaoInicial[5] = new Positions(592, 468, 270);
     posicaoInicial[6] = new Positions(519, 155, 90);
     posicaoInicial[7] = new Positions(160, 710, 0);
+    //agrupando os elementos em vetores
     percursos = new ImageView[]{redPath, greenPath, pinkPath, bluePath, yellowPath, orangePath, purplePath, brownPath};
     velocidade = new Slider[]{speedRed, speedGreen, speedPink, speedBlue, speedYellow, speedOrange, speedPurple, speedBrown};
     carImage = new ImageView[]{redCar, greenCar, pinkCar, blueCar, yellowCar, orangeCar, purpleCar, brownCar};
-    /*
-    //carroVermelho = new Car(redCar, 0, 726,-8,this);
-    //carroVerde = new Car(greenCar, 1,321,196,this);
-    //carroRosa = new Car(pinkCar, 2, 475, 390, this);
-    //carroAzul = new Car(blueCar, 3,162,426,this);
-    //carroAmarelo = new Car(yellowCar, 4,321,573,this);
-    //carroLaranja = new Car(orangeCar, 5, 592,468, this);
-    //carroRoxo = new Car(purpleCar,6,519,155,this);
-    //carroMarrom = new Car(brownCar, 7,160,710, this);
-    iniciarCarros();
-
-    iniciarSemaforos();
-    for(int i = 0; i<7;i++){
-      booleansIsVisible[i] = false;
-    }
-
-
-    //carroVermelho.start();
-    //carroVerde.start();
-    //carroRosa.start();
-   //carroAzul.start();
-    //carroAmarelo.start();
-    //carroLaranja.start();
-    //carroRoxo.start();
-    //carroMarrom.start();*/
-    iniciar();
-
-
+    iniciar();//chamando o metodo que da inicio a aplicacao
   }
 
+  /* ***************************************************************
+   * Metodo: iniciar
+   * Funcao: iniciar os elementos, instanciar os objetos Car e semaforos
+   * Parametros: Sem parametros
+   * Retorno: Sem retorno.
+   *************************************************************** */
   public void iniciar() {
-    for (int i = 0; i < 8; i++) {
-      velocidade[i].setValue(5);
-      percursos[i].setVisible(booleansIsVisible[i]);
+    iniciarSemaforos();//instanciando todos os semaforos
+    for (int i = 0; i < M; i++) {
+      velocidade[i].setValue(6);//setando a velocidade inicial
+      percursos[i].setVisible(false);//setando a visibilidade dos percursos
     }
-    iniciarSemaforos();
-    iniciarCarros();
-    for (int j = 0; j < 8; j++) {
-      carros[j].start();
+    iniciarCarros();//instanciando os carros
+    for (int j = 0; j < M; j++) {
+      carros[j].start();//dando start nas threads
     }
   }
 
@@ -148,7 +127,6 @@ public class MainController implements Initializable {
   @FXML
   public void reset() {
     interromperThreads();
-    iniciarSemaforos();
     iniciar();
   }
 
@@ -159,53 +137,89 @@ public class MainController implements Initializable {
    * Retorno: Sem retorno.
    *************************************************************** */
   public void interromperThreads() {
-    for (int j = 0; j < 8; j++) {//pausando as threads para interromper sem haver conflito.
+    for (int j = 0; j < M; j++) {//pausando as threads para interromper sem haver conflito.
       carros[j].pausar();
     }
-    for (int i = 0; i < 8; i++) {//interrompendo as threads e setando as variaveis booleanas.
+    for (int i = 0; i < M; i++) {//interrompendo as threads e setando as variaveis booleanas.
       carros[i].interrupt();
       booleansIsVisible[i] = false;
-      carros[i].posicionar();
     }
   }
 
+  /* ***************************************************************
+   * Metodo: iniciarSemaforos
+   * Funcao: Instancia os semaforos
+   * Parametros: Sem parametros
+   * Retorno: Sem retorno.
+   *************************************************************** */
   public void iniciarSemaforos() {
     for (int i = 0; i < N; i++) {
       if (i == 7 || i == 8 || i == 10 || i == 44) {
-        rc[i] = new Semaphore(0);
+        rc[i] = new Semaphore(0);//semaforos iniciados em 0 para os carros que iniciam o movimento dentro da RC
       } else {
-        rc[i] = new Semaphore(1);
+        rc[i] = new Semaphore(1);//semaforos iniciados em 1 para aquisicao das RC`s
       }
     }
   }
 
+  /* ***************************************************************
+   * Metodo: iniciarCarros
+   * Funcao: Instancia os carros
+   * Parametros: Sem parametros
+   * Retorno: Sem retorno.
+   *************************************************************** */
   public void iniciarCarros() {
-    for (int i = 0; i < 8; i++) {
-      carros[i] = new Car(carImage[i], i, posicaoInicial[i].getCoordenadaX(), posicaoInicial[i].getCoordenadaY(), posicaoInicial[i].getAngulo(), this);
-      carros[i].posicionar();
+    for (int i = 0; i < M; i++) {
+      carros[i] = new Car(carImage[i], i, posicaoInicial[i].getCoordenadaX(), posicaoInicial[i].getCoordenadaY(), posicaoInicial[i].getAngulo(), this);//Criando os objetos Car
     }
   }
 
+  /* ***************************************************************
+   * Metodo: getVelocidadeCar
+   * Funcao: Verifica o valor atual do slider de velocidade no
+   *         carro baseado em seu Id.
+   * Parametros: id do tipo inteiro
+   * Retorno: valor numerico de tipo double
+   *************************************************************** */
   public double getVelocidadeCar(int id) {
     return velocidade[id].getValue();
   }
 
+  /* ***************************************************************
+   * Metodo: pauseRedCar
+   * Funcao: pausa o carro vermelhor
+   * Parametros: Sem parametros.
+   * Retorno: Sem retorno.
+   *************************************************************** */
   @FXML
   public void pauseRedCar() {
     carros[0].pausar();
   }
 
+  /* ***************************************************************
+   * Metodo: retormarRedCar
+   * Funcao: retoma o carro vermelhor
+   * Parametros: Sem parametros.
+   * Retorno: Sem retorno.
+   *************************************************************** */
   @FXML
   public void retomarRedCar() {
     carros[0].retomar();
   }
 
+  /* ***************************************************************
+   * Metodo: showRedPath
+   * Funcao: mostra ou oculta o percurso do carro
+   * Parametros: Sem parametros.
+   * Retorno: Sem retorno.
+   *************************************************************** */
   @FXML
   public void showRedPath() {
     booleansIsVisible[0] = !booleansIsVisible[0];
     percursos[0].setVisible(booleansIsVisible[0]);
   }
 
+  //========= OS METODOS ABAIXO SEGUEM O MESMO PADRAO DOS TRES ANTERIORES =========//
   @FXML
   public void pauseGreenCar() {
     carros[1].pausar();
@@ -317,6 +331,4 @@ public class MainController implements Initializable {
     booleansIsVisible[7] = !booleansIsVisible[7];
     percursos[7].setVisible(booleansIsVisible[7]);
   }
-
-
 }

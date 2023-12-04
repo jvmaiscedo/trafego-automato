@@ -55,7 +55,7 @@
             <Font size="1.0" />
          </font>
       </Button>
-      <Slider fx:id="speedRed" layoutX="846.0" layoutY="158.0" max="10.0" min="1.0" prefHeight="16.0" prefWidth="92.0" rotate="180.0" value="5.0" />
+      <Slider fx:id="speedRed" layoutX="846.0" layoutY="158.0" max="10.0" min="2.0" prefHeight="16.0" prefWidth="92.0" rotate="180.0" value="5.0" />
       <Button layoutX="907.0" layoutY="128.0" mnemonicParsing="false" onAction="#showRedPath" prefHeight="22.0" prefWidth="24.0">
          <graphic>
             <ImageView fitHeight="22.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
@@ -90,7 +90,7 @@
             <Font size="1.0" />
          </font>
       </Button>
-      <Slider fx:id="speedGreen" layoutX="846.0" layoutY="231.0" max="10.0" min="1.0" prefHeight="16.0" prefWidth="92.0" rotate="180.0" value="5.0" />
+      <Slider fx:id="speedGreen" layoutX="846.0" layoutY="231.0" max="10.0" min="2.0" prefHeight="16.0" prefWidth="92.0" rotate="180.0" value="5.0" />
       <Button layoutX="846.0" layoutY="276.0" mnemonicParsing="false" onAction="#pausePinkCar" prefHeight="22.0" prefWidth="24.0">
          <graphic>
             <ImageView fitHeight="20.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
@@ -126,7 +126,7 @@
             <Font size="1.0" />
          </font>
       </Button>
-      <Slider fx:id="speedPink" layoutX="846.0" layoutY="306.0" max="10.0" min="1.0" prefHeight="16.0" prefWidth="92.0" rotate="180.0" value="5.0" />
+      <Slider fx:id="speedPink" layoutX="846.0" layoutY="306.0" max="10.0" min="2.0" prefHeight="16.0" prefWidth="92.0" rotate="180.0" value="5.0" />
       <Button layoutX="846.0" layoutY="352.0" mnemonicParsing="false" onAction="#pauseBlueCar" prefHeight="22.0" prefWidth="24.0">
          <graphic>
             <ImageView fitHeight="20.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
@@ -162,7 +162,7 @@
             <Font size="1.0" />
          </font>
       </Button>
-      <Slider fx:id="speedBlue" layoutX="846.0" layoutY="382.0" max="10.0" min="1.0" prefHeight="16.0" prefWidth="92.0" rotate="180.0" value="5.0" />
+      <Slider fx:id="speedBlue" layoutX="846.0" layoutY="382.0" max="10.0" min="2.0" prefHeight="16.0" prefWidth="92.0" rotate="180.0" value="5.0" />
       <Button layoutX="846.0" layoutY="428.0" mnemonicParsing="false" onAction="#pauseYellowCar" prefHeight="22.0" prefWidth="24.0">
          <graphic>
             <ImageView fitHeight="20.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
@@ -198,7 +198,7 @@
             <Font size="1.0" />
          </font>
       </Button>
-      <Slider fx:id="speedYellow" layoutX="846.0" layoutY="458.0" max="10.0" min="1.0" prefHeight="16.0" prefWidth="92.0" rotate="180.0" value="5.0" />
+      <Slider fx:id="speedYellow" layoutX="846.0" layoutY="458.0" max="10.0" min="2.0" prefHeight="16.0" prefWidth="92.0" rotate="180.0" value="5.0" />
       <Button layoutX="846.0" layoutY="505.0" mnemonicParsing="false" onAction="#pauseOrangeCar" prefHeight="22.0" prefWidth="24.0">
          <graphic>
             <ImageView fitHeight="20.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
@@ -234,7 +234,7 @@
             <Font size="1.0" />
          </font>
       </Button>
-      <Slider fx:id="speedOrange" layoutX="846.0" layoutY="535.0" max="10.0" min="1.0" prefHeight="16.0" prefWidth="92.0" rotate="180.0" value="5.0" />
+      <Slider fx:id="speedOrange" layoutX="846.0" layoutY="535.0" max="10.0" min="2.0" prefHeight="16.0" prefWidth="92.0" rotate="180.0" value="5.0" />
       <Button layoutX="846.0" layoutY="582.0" mnemonicParsing="false" onAction="#pausePurpleCar" prefHeight="22.0" prefWidth="24.0">
          <graphic>
             <ImageView fitHeight="20.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
@@ -270,7 +270,7 @@
             <Font size="1.0" />
          </font>
       </Button>
-      <Slider fx:id="speedPurple" layoutX="846.0" layoutY="612.0" max="10.0" min="1.0" prefHeight="16.0" prefWidth="92.0" rotate="180.0" value="5.0" />
+      <Slider fx:id="speedPurple" layoutX="846.0" layoutY="612.0" max="10.0" min="2.0" prefHeight="16.0" prefWidth="92.0" rotate="180.0" value="5.0" />
       <Button layoutX="846.0" layoutY="659.0" mnemonicParsing="false" onAction="#pauseBrownCar" prefHeight="22.0" prefWidth="24.0">
          <graphic>
             <ImageView fitHeight="20.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
@@ -306,7 +306,7 @@
             <Font size="1.0" />
          </font>
       </Button>
-      <Slider fx:id="speedBrown" layoutX="846.0" layoutY="689.0" max="10.0" min="1.0" prefHeight="16.0" prefWidth="92.0" rotate="180.0" value="5.0" />
+      <Slider fx:id="speedBrown" layoutX="846.0" layoutY="689.0" max="10.0" min="2.0" prefHeight="16.0" prefWidth="92.0" rotate="180.0" value="5.0" />
       <ImageView fx:id="redPath" fitHeight="800.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@../img/redPath.png" />

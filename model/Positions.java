@@ -1,8 +1,14 @@
+/* ***************************************************************
+ * Autor............: Joao Victor Gomes Macedo
+ * Matricula........: 202210166
+ * Inicio...........: 22/11/2023
+ * Ultima alteracao.: 03/12/2023
+ * Nome.............: Positions
+ * Funcao...........: Modela os objetos usados como posicao dos carros
+ *************************************************************** */
 package model;
 
-
 public class Positions {
-
   private double coordenadaX;//Coordenada X.
   private double coordenadaY;//Coordenada Y.
   private double angulo; //Angulo inicial.
@@ -15,8 +21,8 @@ public class Positions {
 
   /* ***************************************************************
   * Metodo: getCoordenadaX
-  * Funcao: Esta funcao retorna a coordenada X do conjunto (x,y) que
-            compoe o objeto coordenada.
+  * Funcao: Esta funcao retorna a coordenada X do conjunto que
+            compoe o objeto positions.
   * Parametros: sem parametros
   * Retorno: retorna a coordenada x de tipo inteiro.
   *************************************************************** */
@@ -26,8 +32,8 @@ public class Positions {
 
   /* ***************************************************************
   * Metodo: getCoordenadaY
-  * Funcao: Esta funcao retorna a coordenada Y do conjunto (x,y) que
-            compoe o objeto coordenada.
+  * Funcao: Esta funcao retorna a coordenada Y do conjunto que
+            compoe o objeto positions.
   * Parametros: sem parametros
   * Retorno: retorna a coordenada y de tipo inteiro.
   *************************************************************** */
@@ -35,6 +41,12 @@ public class Positions {
     return coordenadaY;
   }
 
+  /* ***************************************************************
+   * Metodo: getAngulo
+   * Funcao: Esta funcao retorna o angulo que compoe o objeto positions.
+   * Parametros: sem parametros
+   * Retorno: retorna a coordenada y de tipo inteiro.
+   *************************************************************** */
   public double getAngulo() {
     return angulo;
   }

@@ -1,3 +1,11 @@
+/* ***************************************************************
+ * Autor............: Joao Victor Gomes Macedo
+ * Matricula........: 202210166
+ * Inicio...........: 22/11/2023
+ * Ultima alteracao.: 03/12/2023
+ * Nome.............: Car
+ * Funcao...........: Modela o comportamento dos carros.
+ *************************************************************** */
 package model;
 
 import controller.MainController;
@@ -13,6 +21,12 @@ public class Car extends Thread {
   private double anguloInicial;
   private MainController control;
 
+  /* ***************************************************************
+   * Metodo: Car
+   * Funcao: Construtor do objeto da classe Car
+   * Parametros: Sem parametros.
+   * Retorno: Sem retorno.
+   *************************************************************** */
   public Car(ImageView img, int id, double posInicialX, double posInicialY, double anguloInicial, MainController control) {
     this.img = img;
     this.id = id;
@@ -22,13 +36,25 @@ public class Car extends Thread {
     this.anguloInicial = anguloInicial;
   }
 
+  /* ***************************************************************
+   * Metodo: run
+   * Funcao: Executar o ciclo de vida do carro.
+   * Parametros: Sem parametros.
+   * Retorno: Sem retorno.
+   *************************************************************** */
   @Override
   public void run() {
-    while (!Thread.interrupted()) {
+    while (true) {
       movendo(this.id);
     }
   }
 
+  /* ***************************************************************
+   * Metodo: movendo
+   * Funcao: seleciona a partir do id o metodo de movimento a ser chamado
+   * Parametros: Id do tipo inteiro.
+   * Retorno: Sem retorno.
+   *************************************************************** */
   private void movendo(int id) {
     switch (id) {
       case 0:
@@ -58,19 +84,12 @@ public class Car extends Thread {
     }
   }
 
-
-  public double getPosInicialX() {
-    return posInicialX;
-  }
-
-  public double getPosInicialY() {
-    return posInicialY;
-  }
-
-  public double getAnguloInicial() {
-    return anguloInicial;
-  }
-
+  /* ***************************************************************
+   * Metodo: move_down
+   * Funcao: incrementa a coordenada Y da imagem movimentando-a para baixo
+   * Parametros: Limite de tipo double.
+   * Retorno: Sem retorno.
+   *************************************************************** */
   private void move_down(double lim) {
     Platform.runLater(() -> this.img.setRotate(180));
     while (img.getLayoutY() < lim && !Thread.interrupted()) {
@@ -80,6 +99,12 @@ public class Car extends Thread {
     }
   }
 
+  /* ***************************************************************
+   * Metodo: move_up
+   * Funcao: decrementa a coordenada Y da imagem movimentando-a para cima
+   * Parametros: Limite de tipo double.
+   * Retorno: Sem retorno.
+   *************************************************************** */
   private void move_up(double lim) {
     Platform.runLater(() -> this.img.setRotate(0));
     while (img.getLayoutY() > lim && !Thread.interrupted()) {
@@ -89,6 +114,12 @@ public class Car extends Thread {
     }
   }
 
+  /* ***************************************************************
+   * Metodo: move_right
+   * Funcao: incrementa a coordenada X da imagem movimentando-a para direita
+   * Parametros: Limite de tipo double.
+   * Retorno: Sem retorno.
+   *************************************************************** */
   private void move_right(double lim) {
     Platform.runLater(() -> this.img.setRotate(90));
     while (img.getLayoutX() < lim && !Thread.interrupted()) {
@@ -98,6 +129,12 @@ public class Car extends Thread {
     }
   }
 
+  /* ***************************************************************
+   * Metodo: move_left
+   * Funcao: Decrementa a coordenada X da imagem movimentando-a para esquerda
+   * Parametros: Limite de tipo double.
+   * Retorno: Sem retorno.
+   *************************************************************** */
   private void move_left(double lim) {
     Platform.runLater(() -> this.img.setRotate(270));
     while (img.getLayoutX() > lim && !Thread.interrupted()) {
@@ -107,13 +144,18 @@ public class Car extends Thread {
     }
   }
 
+  /* ***************************************************************
+   * Metodo: posicionar
+   * Funcao: Seta as coordenadas iniciais e rotacao das imagens
+   * Parametros: Sem parametros
+   * Retorno: Sem retorno.
+   *************************************************************** */
   public void posicionar() {
-    Platform.runLater(() -> {
-        this.img.setRotate(anguloInicial);
-        this.img.setLayoutX(this.posInicialX);
-        this.img.setLayoutY(this.posInicialY);
-      }
-    );
+    sleepTime(3);
+    Platform.runLater(() -> this.img.setRotate(anguloInicial));
+    Platform.runLater(() -> this.img.setLayoutX(this.posInicialX));
+    Platform.runLater(() -> this.img.setLayoutY(this.posInicialY));
+    sleepTime(3);
   }
 
   /* ***************************************************************
@@ -129,8 +171,16 @@ public class Car extends Thread {
     }
   }
 
+  /* ***************************************************************
+   * Metodo: moveRedCar
+   * Funcao: estrutura do movimentacao do carro com os semaforos e metodos
+   *         de movimento.
+   * Parametros: Sem parametros.
+   * Retorno: Sem retorno.
+   *************************************************************** */
   private void moveRedCar() {
     try {
+      posicionar();
       move_left(678);
       MainController.rc[0].acquire();//Rc vermelho e marrom
       MainController.rc[1].acquire();//Rc vermelho e amarelo
@@ -157,7 +207,7 @@ public class Car extends Thread {
       MainController.rc[40].acquire();//Rc d1f2
       move_down(504);
       MainController.rc[35].release();//Rc c1d1
-      move_down(760);
+      move_down(756);
       move_right(118);
       MainController.rc[4].acquire();//Rc vermelho e marrom 2
       MainController.rc[5].acquire();//Rc vemelho e azul 2
@@ -177,7 +227,7 @@ public class Car extends Thread {
       MainController.rc[50].release();//Rc f4f5
       MainController.rc[6].release();//Rc vermelho e amarelo 2
       MainController.rc[4].release();//Rc vermelho e marrom 2
-      move_right(770);
+      move_right(765);
       move_up(504);
       MainController.rc[36].acquire();//Rc c6d6
       move_up(419);
@@ -188,11 +238,20 @@ public class Car extends Thread {
       move_up(-8);
       move_right(726);
     } catch (InterruptedException e) {
+      e.printStackTrace();
     }
   }
 
+  /* ***************************************************************
+   * Metodo: moveGreenCar
+   * Funcao: estrutura do movimentacao do carro com os semaforos e metodos
+   *         de movimento.
+   * Parametros: Sem parametros.
+   * Retorno: Sem retorno.
+   *************************************************************** */
   private void moveGreenCar() {
     try {
+      posicionar();
       move_down(419);
       MainController.rc[8].acquire();//Rc verde e laranja
       MainController.rc[38].acquire();//Rc d3d4
@@ -252,8 +311,16 @@ public class Car extends Thread {
     }
   }
 
+  /* ***************************************************************
+   * Metodo: movePinkCar
+   * Funcao: estrutura do movimentacao do carro com os semaforos e metodos
+   *         de movimento.
+   * Parametros: Sem parametros.
+   * Retorno: Sem retorno.
+   *************************************************************** */
   private void movePinkCar() {
     try {
+      posicionar();
       move_up(196);
       MainController.rc[11].acquire();//Rc rosa e roxo
       move_up(36);
@@ -306,8 +373,16 @@ public class Car extends Thread {
     }
   }
 
+  /* ***************************************************************
+   * Metodo: moveBlueCar
+   * Funcao: estrutura do movimentacao do carro com os semaforos e metodos
+   *         de movimento.
+   * Parametros: Sem parametros.
+   * Retorno: Sem retorno.
+   *************************************************************** */
   private void moveBlueCar() {
     try {
+      posicionar();
       move_up(336);
       MainController.rc[31].acquire();//Rc b2c2
       move_up(196);
@@ -372,11 +447,19 @@ public class Car extends Thread {
     }
   }
 
+  /* ***************************************************************
+   * Metodo: moveYellowCar
+   * Funcao: estrutura do movimentacao do carro com os semaforos e metodos
+   *         de movimento.
+   * Parametros: Sem parametros.
+   * Retorno: Sem retorno.
+   *************************************************************** */
   private void moveYellowCar() {
     try {
+      posicionar();
       move_up(504);
-      MainController.rc[51].acquire();//Rc amarelo e rosa especial
       MainController.rc[1].acquire();//Rc vermelho e amarelo
+      MainController.rc[51].acquire();//Rc amarelo e rosa especial
       MainController.rc[7].acquire();//Rc verde e amarelo
       MainController.rc[20].acquire();//Rc cd3
       move_up(419);
@@ -396,7 +479,7 @@ public class Car extends Thread {
       MainController.rc[51].release();//Rc amarelo e rosa especial
       move_right(595);
       MainController.rc[29].acquire();//Rc a5b5
-      move_right(630);
+      move_right(638);
       move_down(36);
       MainController.rc[25].release();//Rc a4a5
       MainController.rc[1].release();//Rc vermelho e amarelo
@@ -418,7 +501,7 @@ public class Car extends Thread {
       MainController.rc[6].acquire();//Rc vermelho e amarelo 2
       MainController.rc[17].acquire();//Rc amarelo e laranja
       MainController.rc[50].acquire();//Rc f4f5
-      move_down(745);
+      move_down(756);
       move_left(592);
       MainController.rc[47].release();//Rc e5f5
       move_left(524);
@@ -438,8 +521,16 @@ public class Car extends Thread {
     }
   }
 
+  /* ***************************************************************
+   * Metodo: moveOrangeCar
+   * Funcao: estrutura do movimentacao do carro com os semaforos e metodos
+   *         de movimento.
+   * Parametros: Sem parametros.
+   * Retorno: Sem retorno.
+   *************************************************************** */
   private void moveOrangeCar() {
     try {
+      posicionar();
       move_left(527);
       MainController.rc[15].acquire();//Rc rosa e laranja
       MainController.rc[21].acquire();//Rc cd4
@@ -462,7 +553,7 @@ public class Car extends Thread {
       move_down(504);
       MainController.rc[37].release();//Rc d1d2
       MainController.rc[15].release();//Rc rosa e laranja
-      move_down(752);
+      move_down(756);
       move_right(118);
       MainController.rc[18].acquire();//Rc laranja e marrom
       MainController.rc[16].acquire();//Rc azul e laranja
@@ -485,10 +576,10 @@ public class Car extends Thread {
       MainController.rc[50].release();//Rc f4f5
       MainController.rc[17].release();//Rc amarelo e laranja
       MainController.rc[18].release();//Rc laranja e marrom
-      move_right(745);
+      move_right(758);
       move_up(504);
       MainController.rc[39].acquire();//Rc d5d6
-      move_up(460);
+      move_up(468);
       move_left(718);
       MainController.rc[43].release();//Rc d6f5
       move_left(678);
@@ -500,8 +591,16 @@ public class Car extends Thread {
     }
   }
 
+  /* ***************************************************************
+   * Metodo: movePurpleCar
+   * Funcao: estrutura do movimentacao do carro com os semaforos e metodos
+   *         de movimento.
+   * Parametros: Sem parametros.
+   * Retorno: Sem retorno.
+   *************************************************************** */
   private void movePurpleCar() {
     try {
+      posicionar();
       move_right(592);
       MainController.rc[32].acquire();//Rc b5c5
       move_right(636);
@@ -593,8 +692,16 @@ public class Car extends Thread {
     }
   }
 
+  /* ***************************************************************
+   * Metodo: moveBrownCar
+   * Funcao: estrutura do movimentacao do carro com os semaforos e metodos
+   *         de movimento.
+   * Parametros: Sem parametros.
+   * Retorno: Sem retorno.
+   *************************************************************** */
   private void moveBrownCar() {
     try {
+      posicionar();
       move_up(659);
       MainController.rc[41].acquire();//Rc d2e2
       move_up(573);
@@ -700,6 +807,13 @@ public class Car extends Thread {
     }
   }
 
+  /* ***************************************************************
+   * Metodo: pausando
+   * Funcao: realiza o pause na thread colocando o processo para dormir
+   *         ate que a flag seja alterada.
+   * Parametros: Sem parametro.
+   * Retorno: Sem retorno.
+   *************************************************************** */
   private void pausando() {
     while (isPaused && !Thread.interrupted()) {
       try {
@@ -730,5 +844,4 @@ public class Car extends Thread {
   public void retomar() {
     isPaused = false;
   }
-
 }
